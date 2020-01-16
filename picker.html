@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>picker</title>
+    <style type="text/css">
+    body {display: flex; justify-content: center; padding: 3em 0} input {padding: 1em 1.5em; font-size:1.2em}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+    appearance: none;
+}
+    </style>
+</head>
+<body>
+    
+<input id="datepicker" type="date">
+    <script>
+    var picker = new Pikaday({ 
+  field: document.getElementById('datepicker'),
+  format: 'yyyy-MM-dd',
+  toString(date, format) {
+    let day = ("0" + date.getDate()).slice(-2);
+    let month = ("0" + (date.getMonth() + 1)).slice(-2);
+    let year = date.getFullYear();
+    return `${year}-${month}-${day}`;
+  }
+});
+    </script>
+</body>
+</html>

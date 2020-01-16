@@ -7,12 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="img/app-blue.png">    
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <link href="css/common.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
     <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/yearpicker.css">
-    <script src="js/yearpicker.js" async></script>
 </head>
 
 <body style="overflow-y: scroll;">
@@ -239,9 +236,9 @@
                                         <form name="frmEX" autocomplete="off" id="FarmDonsaDailyReport">
                                             <input type="text" name="mdate6" class="mdate" size="7" maxlength="7" value="" placeholder="월 선택" />
                                             <select onchange="categoryChange(this)">
-                                                <option value="a">농장 선택</option>
-                                                <option value="b">파주 농장</option>
-                                                <option value="c">의정부 농장</option>
+                                                <option value="0">농장 선택</option>
+                                                <option value="1">파주 농장</option>
+                                                <option value="2">의정부 농장</option>
                                             </select>
                                             <select id="good">
                                                 <option>돈사 선택</option>
@@ -348,6 +345,7 @@
                 </div>
             </div>
         </div>
+        <div id="tempdata"></div>
     </section>
     <div class="cleafix"></div>
     <footer>
@@ -380,6 +378,8 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/tab_menu.js"></script>
+    <script type="text/javascript" src="js/daily_check.js"></script>
     <script src="https://kit.fontawesome.com/b55569e153.js" crossorigin="anonymous"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
