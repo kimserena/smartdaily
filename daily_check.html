@@ -209,9 +209,9 @@
                                         <form name="frmEX" autocomplete="off" id="FarmDailyReport">
                                             <input type="text" name="mdate5" class="mdate" size="7" maxlength="7" value="" placeholder="월 선택" />
                                             <select>
-                                                <option value="0">농장 선택</option>
-                                                <option value="1">파주 농장</option>
-                                                <option value="2">의정부 농장</option>
+                                                <option value="a">농장 선택</option>
+                                                <option value="b">파주 농장</option>
+                                                <option value="c">의정부 농장</option>
                                             </select>
                                             <input type="submit" value="조회" class="check_btn"> </form>
                                         <button type="button" class="e-download" onclick="fnExcelReport('table5','FarmDailyReport');">엑셀 다운로드</button>
@@ -236,9 +236,9 @@
                                         <form name="frmEX" autocomplete="off" id="FarmDonsaDailyReport">
                                             <input type="text" name="mdate6" class="mdate" size="7" maxlength="7" value="" placeholder="월 선택" />
                                             <select onchange="categoryChange(this)">
-                                                <option value="0">농장 선택</option>
-                                                <option value="1">파주 농장</option>
-                                                <option value="2">의정부 농장</option>
+                                                <option value="a">농장 선택</option>
+                                                <option value="b">파주 농장</option>
+                                                <option value="c">의정부 농장</option>
                                             </select>
                                             <select id="good">
                                                 <option>돈사 선택</option>
@@ -345,7 +345,7 @@
                 </div>
             </div>
         </div>
-        <div id="tempdata"></div>
+<!--        <div id="tempdata"></div>-->
     </section>
     <div class="cleafix"></div>
     <footer>

@@ -200,12 +200,11 @@ var ajaxCallback = function (data) {
 };
 
 //전체통합월보(누적) 출력
-$(document).ready(function(){
-    $("#AccrueMonthlyReport").submit(function(){
+$("#AccrueMonthlyReport").submit(function(){
     // 유저 인덱스를 가져온다.
-	var useridx = $("#useridx").val();
+    var useridx = $("#useridx").val();
     // start_month 체크박스의 선택된 값을 가져온다.
-    
+
     //동적으로 원격에 있는 JSON 파일(결과값)을 로드 
     $.ajax({
         url: "1.json"
@@ -215,9 +214,9 @@ $(document).ready(function(){
             alert("에러발생");
         }
     });
-        return false;
-    }); // end submit()
-}); // end ready()
+    return false;
+}); // end submit()
+
 
 //전체통합월보(월별) 테이블 출력
 var ajaxCallback2 = function (data) {
@@ -418,9 +417,9 @@ var ajaxCallback2 = function (data) {
 };
 
 //전체통합월보(월별) 출력
-$(document).ready(function(){
-    $("#AllMonthlyReport").submit(function(){
-         //동적으로 원격에 있는 JSON 파일(결과값)을 로드 
+
+$("#AllMonthlyReport").submit(function(){
+     //동적으로 원격에 있는 JSON 파일(결과값)을 로드 
     $.ajax({
         url: "2.json"
         , dataType: "json"
@@ -429,9 +428,9 @@ $(document).ready(function(){
             alert("에러발생");
         }
     });
-        return false;
-    }); // end submit()
-}); // end ready()
+    return false;
+}); // end submit()
+
 
 //전체통합일보 테이블 출력
 var ajaxCallback3 = function (data) {
@@ -494,9 +493,8 @@ var ajaxCallback3 = function (data) {
 };
 
 //전체통합일보 출력
-$(document).ready(function(){
-    $("#TotalDailyReport").submit(function(){
-         //동적으로 원격에 있는 JSON 파일(결과값)을 로드 
+$("#TotalDailyReport").submit(function(){
+     //동적으로 원격에 있는 JSON 파일(결과값)을 로드 
     $.ajax({
         url: "3.json"
         , dataType: "json"
@@ -505,9 +503,8 @@ $(document).ready(function(){
             alert("에러발생");
         }
     });
-        return false;
-    }); // end submit()
-}); // end ready()
+    return false;
+}); // end submit()
 
 //농장별 월보 테이블 출력
 var ajaxCallback4 = function (data) {
@@ -610,7 +607,6 @@ var ajaxCallback4 = function (data) {
 
     // select 버튼에 관한 이벤트
     var sdata = document.getElementById("sel");
-    //document.getElementById("sel").onclick = function(event){
     document.getElementById("sel").onchange = function(event){
       document.getElementById("pazutable").innerText = sdata.value;  
     }
@@ -618,9 +614,8 @@ var ajaxCallback4 = function (data) {
 };
 
 //농장별 월보 출력
-$(document).ready(function(){
-    $("#FarmMonthlyReport").submit(function(){
-         //동적으로 원격에 있는 JSON 파일(결과값)을 로드 
+$("#FarmMonthlyReport").submit(function(){
+     //동적으로 원격에 있는 JSON 파일(결과값)을 로드 
     $.ajax({
         url: "4.json"
         , dataType: "json"
@@ -629,9 +624,8 @@ $(document).ready(function(){
             alert("에러발생");
         }
     });
-        return false;
-    }); // end submit()
-}); // end ready()
+    return false;
+}); // end submit()
 
 //농장별 일보 테이블 출력
 var ajaxCallback5 = function (data) {
@@ -696,9 +690,8 @@ var ajaxCallback5 = function (data) {
 };
 
 //농장별 일보 출력
-$(document).ready(function(){
-    $("#FarmDailyReport").submit(function(){
-         //동적으로 원격에 있는 JSON 파일(결과값)을 로드 
+$("#FarmDailyReport").submit(function(){
+     //동적으로 원격에 있는 JSON 파일(결과값)을 로드 
     $.ajax({
         url: "5.json"
         , dataType: "json"
@@ -707,9 +700,8 @@ $(document).ready(function(){
             alert("에러발생");
         }
     });
-        return false;
-    }); // end submit()
-}); // end ready()
+    return false;
+}); // end submit()
 
 //농장 돈사별 일보 테이블 출력
 var ajaxCallback6 = function (data) {
@@ -772,29 +764,12 @@ var ajaxCallback6 = function (data) {
 };
 
 //농장별 일보 출력
-$(document).ready(function(){
-    $("#FarmDonsaDailyReport").submit(function(){
-        
-    // select 버튼에 관한 이벤트
-//    var sdata6 = document.getElementById("good");
-//    document.getElementById("good").onchange = function(event){
-//       document.getElementById("seltable").innerText = sdata6.value; 
-//    }
-    
-    // 선택된 월(pick_month)의 값을 가져온다.
-    var r = $("#tempdata").val();
-        
-    alert(r);
-        
-    console.log(pick_month);
-    /*
-    // 셀렉트박스에서 선택된 buildingid의 값을 가져온다.
-//    var checkboxValues = [];
-//    $("input[name='hobby']:checked").each(function(i) {
-//        checkboxValues.push($(this).val());
-//    });
-    // 선택된 월(날짜문자열)과 돈사아이디 값을 name/value 형태로 담는다.
-    var allData = { "pick_month": pick_month, "buildingid": 2 };
+$("#FarmDonsaDailyReport").submit(function(){
+    var data6 = $("#good").val();    
+    var data6idx = $("#good option").index($("#good option:selected"));    
+    $("#seltable");
+    // 선택된 월(날짜문자열)과 셀렉트박스에서 선택된 돈사아이디(buildingid) 값을 name/value 형태로 담는다.
+    var allData = { "pick_month": $(".mdate").val() , "buildingid": data6idx };
     //동적으로 원격에 있는 JSON 파일(결과값)을 로드
     $.ajax({
         url: "http://101.101.162.62:8081/smartdaily/req_building_daily"
@@ -806,11 +781,8 @@ $(document).ready(function(){
             alert("에러발생");
         }
     });
-        return false;
-        
-        */
-    }); // end submit()
-}); // end ready()
+    return false;
+}); // end submit()
 
 //시작-종료달력출력
 $(document).ready(function () {    
@@ -955,39 +927,22 @@ $(document).ready(function () {
     }
     datepicker_default.closeText = "선택";
     datepicker_default.dateFormat = "yy-mm";
-    
-    datepicker_default.onClose = function (dateText, inst)
-    { 
+    datepicker_default.onClose = function (dateText, inst){ 
         var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
         var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
         $(this).datepicker("option", "defaultDate", new Date(year, month));
         $(this).datepicker('setDate', new Date(year, month));
-        
-        
         // ------------year는 4자리 month는 00 두자리 문자로 만듬.------------
         var pmonth = new Date(year, Number(month) + 1);
-        
-        
-        $('#tempdata').val(pmonth.toISOString().substring(0,7));
-        
+        $('.mdate').val(pmonth.toISOString().substring(0,7));
     }
-    
     datepicker_default.beforeShow = function () {
         var selectDate = $(".mdate").val().split("-");
         var year = Number(selectDate[0]);
         var month = Number(selectDate[1]) ;
         $(this).datepicker("option", "defaultDate", new Date(year, month));
     }
-    $(".mdate").datepicker(datepicker_default);    
-//    $(".mdate").datepicker({
-//   onSelect: function(dateText, inst) { 
-//      var dateAsString = dateText; //the first parameter of this function
-//      var dateAsObject = $(this).datepicker( 'getDate' ); //the getDate method
-//       
-//       var currentDate = $( ".selector" ).datepicker( "getDate" );
-//       console.log(currentDate);
-//   }
-//    });
+    $(".mdate").datepicker(datepicker_default);
 });
 
 //년별달력출력
@@ -1041,18 +996,19 @@ $(document).ready(function () {
 //일보조회 셀렉트
 function categoryChange(e) {
     var donsa_a = ["돈사 선택"];
-    var donsa_b = ["육성사 1동", "육성사 2동", "육성사 3동", "육성사 4동", "육성사 5동"];
-    var donsa_c = ["육성사 1동", "육성사 2동", "육성사 3동", "육성사 4동", "육성사 5동", "육성사 6동", "육성사 7동"];
+    var donsa_b = ["돈사 선택","육성사 1동", "육성사 2동", "육성사 3동", "육성사 4동", "육성사 5동"];
+    var donsa_c = ["돈사 선택","육성사 1동", "육성사 2동", "육성사 3동", "육성사 4동", "육성사 5동", "육성사 6동", "육성사 7동"];
     var target = document.getElementById("good");
-    if (e.value == "0") var d = donsa_a;
-    else if (e.value == "1") var d = donsa_b;
-    else if (e.value == "2") var d = donsa_c;
+    if (e.value == "a") var d = donsa_a;
+    else if (e.value == "b") var d = donsa_b;
+    else if (e.value == "c") var d = donsa_c;
     target.options.length = 0;
     for (x in d) {
         var opt = document.createElement("option");
         opt.value = d[x];
         opt.innerHTML = d[x];
         target.appendChild(opt);
+        opt.index = x;
     }
 }
 

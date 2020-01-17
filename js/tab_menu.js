@@ -1,9 +1,9 @@
 //서브 탭 메뉴
 
-$(document).ready(function () {
-    // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
-});
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
 
 function openInfo(evt, infoName) {
     var i, tabcontent, tablinks;
@@ -20,12 +20,10 @@ function openInfo(evt, infoName) {
 }
 
 //탭_탭
-$(document).ready(function () {
-        $('ul.tabs li').click(function () {
-            var tab_id = $(this).attr('data-tab');
-            $('ul.tabs li').removeClass('current');
-            $('.tab-content').removeClass('current');
-            $(this).addClass('current');
-            $("#" + tab_id).addClass('current');
-        })
-    });
+$('ul.tabs li').click(function () {
+    var tab_id = $(this).attr('data-tab');
+    $('ul.tabs li').removeClass('current');
+    $('.tab-content').removeClass('current');
+    $(this).addClass('current');
+    $("#" + tab_id).addClass('current');
+})
