@@ -129,7 +129,7 @@ section{background: ; margin-top: 0px;}
 
 /*비쥬얼*/
 div#slideObject {width:100%; min-width:1100px; min-height:100vh; display:flex; flex-direction:column; position:relative; color:#fff; background: url(../img/img_v_4.jpg);background-size: 100% 100%; background-position: center center; cursor: default;}
-div#slideObject > div { width:1100px; left:50% !important; margin-top:350px; margin-left:-650px; }
+div#slideObject > div { width:1100px; left:50% !important; margin-top:18%; margin-left:-650px; }
 /*
 div#slideObject > div > h2 { font-size:6em; }
 div#slideObject > div > h2 > span:first-of-type { color:#f99; border-top:3px solid #f99; }
@@ -137,17 +137,17 @@ div#slideObject > div > h2 > span:last-of-type { color:#cbff8e; border-top:3px s
 */
 
 /*.main-visual-info{position: absolute; top:200px;}*/
-.main-visual-info h2:first-child{color:#fff; font-size:30px;}
-.main-visual-info h2:nth-child(2){color: #fff; font-size:72px;}
+.main-visual-info h2:first-child{color:#fff; font-size:1.5em;}
+.main-visual-info h2:nth-child(2){color: #fff; font-size:4.2em;}
 .main-visual-info h3{color:#fff; font-weight: inherit;}
 .info-content{margin-top: 30px; margin-bottom: 50px;}
-.info-button a{display: inline-block; font-size:20px; background: rgba(255,255,255,1); color:#2F4173; padding: 10px 60px; border:1px solid #334478; border-radius: 30px;}
+.info-button a{display: inline-block; font-size:1.2em; background: rgba(255,255,255,1); color:#2F4173; padding: 10px 60px; border:1px solid #334478; border-radius: 30px;}
 .info-button a:hover{background: #1F6BBB; border:1px solid #334478; color:#fff; transition: 0.8s ease;}
 
 /*자세히 알아보기 견적문의*/
 #main-article{width: 100%; height: 300px; display: table; cursor: default;}
-.main-article-left{display: table-cell; text-align: center; width: 50%; background: url(../img/img_v_animal.jpg) no-repeat center; background-size: ;}
-.main-article-right{display: table-cell; text-align: center; width: 50%; background: url(../img/img_v_inquire.jpg) no-repeat right; background-size: ;}
+.main-article-left{display: table-cell; text-align: center; width: 50%; background: url(../img/img_v_animal.jpg) no-repeat center; background-size: cover;}
+.main-article-right{display: table-cell; text-align: center; width: 50%; background: url(../img/img_v_inquire.jpg) no-repeat right; background-size: cover;}
 .main-article-text{padding-top: 85px;}
 .main-article-text p{color:#fff; padding-bottom: 5px;}
 .main-article-text p:last-child{margin-bottom: 10px;}
