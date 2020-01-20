@@ -23,7 +23,6 @@ var ajaxCallback = function (data) {
     $.each(jaga, function (index_nongjang, nongjang) {
         var nname = nongjang["농장이름"];
         var donsaArray = nongjang["돈사"];
-//        console.log(index_nongjang, nname);
         var hap1 = 0;
         var hap2 = 0;
         var hap3 = 0;
@@ -37,7 +36,6 @@ var ajaxCallback = function (data) {
             //  돈사 데이터 반복
             $.each(donsaArray, function (index_donsa, donsa) {
                 var dname = donsa["이름"];
-//                console.log(index_donsa, dname);
                 result += '<td class = "sojaeji">' + nname + '</td>';
                 result += '<td>' + nname + '농장의 ' + dname + '</td>';
                 var gap1 = donsa["값1"];
@@ -96,7 +94,6 @@ var ajaxCallback = function (data) {
     $.each(wetak, function (index_wnongjang, wnongjang) {
         var wnname = wnongjang["농장이름"];
         var wdonsaArray = wnongjang["돈사"];
-//        console.log(index_wnongjang, wnname);
         var whap1 = 0;
         var whap2 = 0;
         var whap3 = 0;
@@ -110,7 +107,6 @@ var ajaxCallback = function (data) {
             //  돈사 데이터 반복
             $.each(wdonsaArray, function (index_wdonsa, wdonsa) {
                 var wdname = wdonsa["이름"];
-//                console.log(index_wdonsa, wdname);
                 result += '<td class="wsojaeji">' + wnname + '</td>';
                 result += '<td>' + wnname + '농장의 ' + wdname + '</td>';
                 var wgap1 = wdonsa["값1"];
@@ -148,10 +144,8 @@ var ajaxCallback = function (data) {
             var wsum7 = 0;
             var wsum8 = 0;
             wsum1 += whap1;
-//            console.log("wsum1 = " + wsum1);
             var wsumArray = new Array();
             wsumArray[0] = wsum1;
-//            console.log(wsumArray);
         }
         if (wdonsaArray != null) {
             result += '<tr>';
@@ -168,7 +162,6 @@ var ajaxCallback = function (data) {
             sum1 += whap1;
         }
     });
-//    console.log("sum1 = " + sum1);
     result += '<tr>';
     result += '<td colspan="3" style="letter-spacing: 50px; background: #ddd;">합계</td>';
     result += '<td style="background: #ddd;">' + sum1 + '</td>';
@@ -240,7 +233,6 @@ var ajaxCallback2 = function (data) {
     $.each(Ajaga, function (Aindex_nongjang, Anongjang) {
         var Anname = Anongjang["농장이름"];
         var AdonsaArray = Anongjang["돈사"];
-//        console.log(index_nongjang, nname);
         var hap1 = 0;
         var hap2 = 0;
         var hap3 = 0;
@@ -254,7 +246,6 @@ var ajaxCallback2 = function (data) {
             //  돈사 데이터 반복
             $.each(AdonsaArray, function (Aindex_donsa, Adonsa) {
                 var Adname = Adonsa["이름"];
-//                console.log(index_donsa, dname);
                 result += '<td class = "Asojaeji">' + Anname + '</td>';
                 result += '<td>' + Anname + '농장의 ' + Adname + '</td>';
                 var gap1 = Adonsa["값1"];
@@ -313,7 +304,6 @@ var ajaxCallback2 = function (data) {
     $.each(Awetak, function (Aindex_wnongjang, Awnongjang) {
         var Awnname = Awnongjang["농장이름"];
         var AwdonsaArray = Awnongjang["돈사"];
-//        console.log(index_wnongjang, wnname);
         var whap1 = 0;
         var whap2 = 0;
         var whap3 = 0;
@@ -327,7 +317,6 @@ var ajaxCallback2 = function (data) {
             //  돈사 데이터 반복
             $.each(AwdonsaArray, function (Aindex_wdonsa, Awdonsa) {
                 var Awdname = Awdonsa["이름"];
-//                console.log(index_wdonsa, wdname);
                 result += '<td class="Awsojaeji">' + Awnname + '</td>';
                 result += '<td>' + Awnname + '농장의 ' + Awdname + '</td>';
                 var wgap1 = Awdonsa["값1"];
@@ -365,10 +354,8 @@ var ajaxCallback2 = function (data) {
             var wsum7 = 0;
             var wsum8 = 0;
             wsum1 += whap1;
-//            console.log("wsum1 = " + wsum1);
             var AwsumArray = new Array();
             AwsumArray[0] = wsum1;
-//            console.log(wsumArray);
         }
         if (AwdonsaArray != null) {
             result += '<tr>';
@@ -385,7 +372,6 @@ var ajaxCallback2 = function (data) {
             sum1 += whap1;
         }
     });
-//    console.log("sum1 = " + sum1);
     result += '<tr>';
     result += '<td colspan="3" style="letter-spacing: 50px; background: #ddd;">합계</td>';
     result += '<td style="background: #ddd;">' + sum1 + '</td>';
@@ -451,7 +437,6 @@ var ajaxCallback3 = function (data) {
     //  농장 반복
     $.each(dailynews, function (index_nongjang, nongjang) {
         allsize += dailynews.length - 1;
-//        var nname = nongjang["구분"];
         var gap1 = nongjang["날짜"];
         var gap2 = nongjang["시작"];
         var gap3 = nongjang["전입"];
@@ -468,7 +453,6 @@ var ajaxCallback3 = function (data) {
         sum5 += gap7;
         sum6 += gap8;
         
-//        result += '<td>' + nname + '</td>';
         result += '<td>' + gap1 + '</td>';
         result += '<td>' + gap2 + '</td>';
         result += '<td>' + gap3 + '</td>';
@@ -511,7 +495,6 @@ var ajaxCallback4 = function (data) {
     $(".unique4").remove();
     var result = '';
     var farmmonthlydata = data["농장별월보"];
-//    var pazu = farmmonthlydata["농장이름"];
     result += '<tr>';
     result += '<td rowspan="0" id="pazutable"></td>';
     var pazusize = 0;
@@ -537,10 +520,8 @@ var ajaxCallback4 = function (data) {
         var hap7 = 0;
         var hap8 = 0;
         if (donsaArray != null) {
-//            pazusize += donsaArray.length + 1;
             //  돈사 데이터 반복
             $.each(donsaArray, function (index_donsa, donsa) {
-//                result += '<td id="pazutable">' + nname + ' 농장</td>';
                 result += '<td>' + nname + '농장의 ' + dname + '</td>';
                 var gap1 = donsa["월별"];
                 var gap2 = donsa["값1"];
@@ -572,8 +553,6 @@ var ajaxCallback4 = function (data) {
 //        if (donsaArray != null) {
             result += '<tr>';
             result += '<td colspan="3" style="letter-spacing: 50px; background: #eee;">소계</td>';
-//            result += '<td style="background: #eee;">' + hap1 + '</td>';
-//            result += '<td style="background: #eee;">' + hap2 + '</td>';
             result += '<td style="background: #eee;">' + hap3 + '</td>';
             result += '<td style="background: #eee;">' + hap4 + '</td>';
             result += '<td style="background: #eee;">' + hap5 + '</td>';
@@ -593,8 +572,6 @@ var ajaxCallback4 = function (data) {
     });
     result += '<tr>';
     result += '<td colspan="3" style="letter-spacing: 50px; background: #ddd;">합계</td>';
-//    result += '<td style="background: #ddd;">' + sum1 + '</td>';
-//    result += '<td style="background: #ddd;">' + sum2 + '</td>';
     result += '<td style="background: #ddd;">' + sum3 + '</td>';
     result += '<td style="background: #ddd;">' + sum4 + '</td>';
     result += '<td style="background: #ddd;">' + sum5 + '</td>';
@@ -603,7 +580,6 @@ var ajaxCallback4 = function (data) {
     result += '<td style="background: #ddd;">' + sum8 + '</td>';
     result += '</tr>';
     $('#tableList4').append(result).addClass("unique4");
-//    $('#pazutable').attr("rowspan", pazusize);
 
     // select 버튼에 관한 이벤트
     var sdata = document.getElementById("sel");
@@ -617,8 +593,10 @@ var ajaxCallback4 = function (data) {
 $("#FarmMonthlyReport").submit(function(){
      //동적으로 원격에 있는 JSON 파일(결과값)을 로드 
     $.ajax({
-        url: "4.json"
+        url: ""
         , dataType: "json"
+        , type: "POST"
+        , data: allData4
         , success: ajaxCallback4
         , error: function () {
             alert("에러발생");
@@ -631,11 +609,8 @@ $("#FarmMonthlyReport").submit(function(){
 var ajaxCallback5 = function (data) {
     $(".unique5").remove();
     var result = '';
-    var dailynews5 = data["농장별 일보"];
-    result += '<tr>';
-    result += '<td id="alltable5">전체</td>';
-    var allsize5 = 0;
-    
+    var dailynews5 = data;
+        
     var sum1 = 0;
     var sum2 = 0;
     var sum3 = 0;
@@ -645,16 +620,16 @@ var ajaxCallback5 = function (data) {
 
     //  농장 반복
     $.each(dailynews5, function (index_nongjang, nongjang) {
-        allsize5 += dailynews5.length - 1;
-//        var nname = nongjang["구분"];
-        var gap1 = nongjang["날짜"];
-        var gap2 = nongjang["시작"];
-        var gap3 = nongjang["전입"];
-        var gap4 = nongjang["전출"];
-        var gap5 = nongjang["폐사"];
-        var gap6 = nongjang["출하"];
-        var gap7 = nongjang["예상"];
-        var gap8 = nongjang["AI 실제"];
+        result += '<tr>';
+        result += '<td class="alltable5">전체</td>';
+        var gap1 = nongjang["recordday"];
+        var gap2 = nongjang["start_count"];
+        var gap3 = nongjang["in_count"];
+        var gap4 = nongjang["out_count"];
+        var gap5 = nongjang["die_count"];
+        var gap6 = nongjang["move_count"];
+        var gap7 = nongjang["expect_count"];
+        var gap8 = nongjang["ai_count"];
         
         sum1 += gap3;
         sum2 += gap4;
@@ -663,7 +638,6 @@ var ajaxCallback5 = function (data) {
         sum5 += gap7;
         sum6 += gap8;
         
-//        result += '<td>' + nname + '</td>';        
         result += '<td>' + gap1 + '</td>';
         result += '<td>' + gap2 + '</td>';
         result += '<td>' + gap3 + '</td>';
@@ -685,16 +659,25 @@ var ajaxCallback5 = function (data) {
     result += '<td style="background: #ddd;">' + sum5 + '</td>';
     result += '<td style="background: #ddd;">' + sum6 + '</td>';
     result += '</tr>';
-    $('#tableList5').append(result).addClass("unique5");
-    $('#alltable5').attr("rowspan", allsize5);
+    $('#tableList5').append(result).addClass("unique5");    
+    $(".alltable5").each(function () {
+        var rows = $(".alltable5:contains('" + $(this).text() + "')");
+        if (rows.length > 1) {
+            rows.eq(0).attr("rowspan", rows.length);
+            rows.not(":eq(0)").remove();
+        }
+    });
 };
 
 //농장별 일보 출력
 $("#FarmDailyReport").submit(function(){
+    var allData5 = { "pick_month": $(".mdate").val() , "locationid": 1 };
      //동적으로 원격에 있는 JSON 파일(결과값)을 로드 
     $.ajax({
-        url: "5.json"
+        url: "//101.101.162.62:8081/smartdaily/req_location_daily"
         , dataType: "json"
+        , type: "POST"
+        , data: allData5
         , success: ajaxCallback5
         , error: function () {
             alert("에러발생");
@@ -760,14 +743,14 @@ var ajaxCallback6 = function (data) {
     result += '<td style="background: #ddd;">' + sum6 + '</td>';
     result += '</tr>';
     $('#tableList6').append(result).addClass("unique6");
-    $('#seltable').attr("rowspan", selsize);    
+    $('#seltable').attr("rowspan", selsize);
+    var data6 = $("#good").val(); //var data6 = document.getElementById("good");
+    $('#seltable').text(data6); //document.getElementById("seltable").innerHTML = data6.options[data6.selectedIndex].value;
 };
 
 //농장별 일보 출력
 $("#FarmDonsaDailyReport").submit(function(){
-    var data6 = $("#good").val();    
     var data6idx = $("#good option").index($("#good option:selected"));    
-    $("#seltable");
     // 선택된 월(날짜문자열)과 셀렉트박스에서 선택된 돈사아이디(buildingid) 값을 name/value 형태로 담는다.
     var allData = { "pick_month": $(".mdate").val() , "buildingid": data6idx };
     //동적으로 원격에 있는 JSON 파일(결과값)을 로드
@@ -921,7 +904,7 @@ $(document).ready(function () {
         , changeMonth: true
         , changeYear: true
         , showButtonPanel: true
-        , yearRange: 'c-99:c+99'
+        , yearRange: 'c-10:c+20'
         , showOtherMonths: true
         , selectOtherMonths: true
     }
