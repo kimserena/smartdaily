@@ -235,10 +235,7 @@
                                     <div id="tab-6" class="tab-content">
                                         <form name="frmEX" autocomplete="off" id="FarmDonsaDailyReport">
                                             <input type="text" name="mdate6" class="mdate" size="7" maxlength="7" value="" placeholder="월 선택" />
-                                            <select onchange="categoryChange(this)">
-                                                <option value="a">농장 선택</option>
-                                                <option value="b">파주 농장</option>
-                                                <option value="c">의정부 농장</option>
+                                            <select id="selectBox" onchange="categoryChange(this)">
                                             </select>
                                             <select id="good">
                                                 <option>돈사 선택</option>
@@ -260,6 +257,18 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="tableList6"> </tbody>
+                                        </table>
+                                        
+                                        <table border="1" style="width: 400px;">
+                                            <thead>
+                                                <tr>
+                                                    <td>농장이름</td>
+                                                    <td>농장id</td>
+                                                    <td>돈사이름</td>
+                                                    <td>돈사id</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tempdata"> </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -345,7 +354,6 @@
                 </div>
             </div>
         </div>
-<!--        <div id="tempdata"></div>-->
     </section>
     <div class="cleafix"></div>
     <footer>

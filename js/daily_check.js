@@ -194,8 +194,7 @@ var ajaxCallback = function (data) {
 
 //전체통합월보(누적) 출력
 $("#AccrueMonthlyReport").submit(function(){
-    // 유저 인덱스를 가져온다.
-    var useridx = $("#useridx").val();
+    
     // start_month 체크박스의 선택된 값을 가져온다.
 
     //동적으로 원격에 있는 JSON 파일(결과값)을 로드 
@@ -687,6 +686,82 @@ $("#FarmDailyReport").submit(function(){
 }); // end submit()
 
 //농장 돈사별 일보 테이블 출력
+
+var useridCallback = function (data) {
+    var result = '';
+    var useriddata = data;
+    result += '<tr>';
+    
+    $("#selectBox").append("<option value='0'>농장 선택</option>");
+   
+    //  농장 반복
+    $.each(useriddata, function (index_nongjang, nongjang) {
+        var nname = nongjang["locationname"];
+        var nid = nongjang["locationid"];
+        var donsaArray = nongjang["buildings"];
+       
+        $("#selectBox").append("<option value='"+ nid +"'>"+ nname +"</option>");
+        
+        if (donsaArray != null) {
+            //  돈사 데이터 반복
+            $.each(donsaArray, function (index_donsa, donsa) {
+                var dname = donsa["buildingname"];
+                var did = donsa["buildingid"];
+                
+                result += '<td class="temtable6">' + nname + '</td>';
+                result += '<td>' + nid + '</td>';
+                result += '<td>' + dname + '</td>';
+                result += '<td>' + did + '</td>';
+                result += '</tr>';
+            })
+        }
+    });
+    $('#tempdata').append(result);
+    $(".temtable6").each(function () {
+        var rows = $(".temtable6:contains('" + $(this).text() + "')");
+        if (rows.length > 1) {
+            rows.eq(0).attr("rowspan", rows.length);
+            rows.not(":eq(0)").remove();
+        }
+    });    
+};
+
+//일보조회 셀렉트
+function categoryChange(e) {
+    var donsa_0 = ["돈사 선택"];
+    var donsa_1 = ["돈사 선택","육성사 1동", "육성사 2동", "육성사 3동", "육성사 4동", "육성사 5동"];
+    var donsa_2 = ["돈사 선택","육성사 1동", "육성사 2동", "육성사 3동", "육성사 4동", "육성사 5동", "육성사 6동", "육성사 7동"];
+    var target = document.getElementById("good");
+    if (e.value == "0") var d = donsa_0;
+    else if (e.value == "1") var d = donsa_1;
+    else if (e.value == "2") var d = donsa_2;
+    target.options.length = 0;
+    for (x in d) {
+        var opt = document.createElement("option");
+        opt.value = d[x];
+        opt.innerHTML = d[x];
+        target.appendChild(opt);
+        opt.index = x;
+    }
+}
+
+$('ul.tabs li:last-child').click(function () {
+    // 유저 인덱스를 가져온다.
+    var useridx = {"useridx":1};
+    
+    $.ajax({
+        url: "http://101.101.162.62:8081/smartdaily/req_user_building"
+        , dataType: "json"
+        , type: "POST"
+        , data: useridx
+        , success: useridCallback
+        , error: function () {
+            alert("에러발생");
+        }
+    });
+    return false;
+})
+
 var ajaxCallback6 = function (data) {
     $(".unique6").remove();
     var result = '';
@@ -704,7 +779,7 @@ var ajaxCallback6 = function (data) {
 
     //  농장 반복
     $.each(dailynews, function (index_nongjang, nongjang) {
-        selsize += dailynews.length-2;
+        selsize += dailynews.length-1;
         var gap1 = nongjang["recordday"];
         var gap2 = nongjang["start_count"];
         var gap3 = nongjang["in_count"];
@@ -975,25 +1050,6 @@ $(document).ready(function () {
     }
     $(".ydate").datepicker(datepicker_default);
 });
-
-//일보조회 셀렉트
-function categoryChange(e) {
-    var donsa_a = ["돈사 선택"];
-    var donsa_b = ["돈사 선택","육성사 1동", "육성사 2동", "육성사 3동", "육성사 4동", "육성사 5동"];
-    var donsa_c = ["돈사 선택","육성사 1동", "육성사 2동", "육성사 3동", "육성사 4동", "육성사 5동", "육성사 6동", "육성사 7동"];
-    var target = document.getElementById("good");
-    if (e.value == "a") var d = donsa_a;
-    else if (e.value == "b") var d = donsa_b;
-    else if (e.value == "c") var d = donsa_c;
-    target.options.length = 0;
-    for (x in d) {
-        var opt = document.createElement("option");
-        opt.value = d[x];
-        opt.innerHTML = d[x];
-        target.appendChild(opt);
-        opt.index = x;
-    }
-}
 
 //일보조회 엑셀다운로드
 function fnExcelReport(id, title) {

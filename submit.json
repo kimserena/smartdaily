@@ -1,38 +1,42 @@
 [
-  {
-    "name": "농장1",
-    "index": 1,
-    "donsa": [
-      {
-        "donsaname": "농장1의돈사1",
-        "index": 1
-      },
-      {
-        "donsaname": "농장1의돈사2",
-        "index": 2
-      },
-      {
-        "donsaname": "농장1의돈사3",
-        "index": 3
-      }
-    ]
-  },
-  {
-    "name": "농장2",
-    "index": 2,
-    "donsa": [
-      {
-        "donsaname": "농장2의돈사1",
-        "index": 4
-      },
-      {
-        "donsaname": "농장2의돈사2",
-        "index": 5
-      },
-      {
-        "donsaname": "농장2의돈사3",
-        "index": 6
-      }
-    ]
-  }
+    {
+        "locationname": "테스트농장1",
+        "locationid": 1,
+        "buildings": [
+            {
+                "buildingname": "테스트동A",
+                "buildingid": 1
+            },
+            {
+                "buildingname": "테스트동B",
+                "buildingid": 2
+            },
+            {
+                "buildingname": "테스트동C",
+                "buildingid": 3
+            }
+        ]
+    },
+    {
+        "locationname": "테스트농장2",
+        "locationid": 2,
+        "buildings": [
+            {
+                "buildingname": "테스트동D",
+                "buildingid": 4
+            },
+            {
+                "buildingname": "테스트동E",
+                "buildingid": 5
+            },
+            {
+                "buildingname": "테스트동F",
+                "buildingid": 6
+            },
+            {
+                "buildingname": "테스트동G",
+                "buildingid": 7
+            }
+        ]
+    }
 ]
