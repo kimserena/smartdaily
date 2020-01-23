@@ -685,11 +685,13 @@ $("#FarmDailyReport").submit(function(){
     return false;
 }); // end submit()
 
-//농장 돈사별 일보 테이블 출력
+var useriddata;
 
+//농장 돈사별 일보 테이블 출력
 var useridCallback = function (data) {
     var result = '';
-    var useriddata = data;
+    useriddata = data;
+    
     result += '<tr>';
     
     $("#selectBox").append("<option value='0'>농장 선택</option>");
@@ -723,26 +725,22 @@ var useridCallback = function (data) {
             rows.eq(0).attr("rowspan", rows.length);
             rows.not(":eq(0)").remove();
         }
-    });    
+    });
 };
 
 //일보조회 셀렉트
 function categoryChange(e) {
-    var donsa_0 = ["돈사 선택"];
-    var donsa_1 = ["돈사 선택","육성사 1동", "육성사 2동", "육성사 3동", "육성사 4동", "육성사 5동"];
-    var donsa_2 = ["돈사 선택","육성사 1동", "육성사 2동", "육성사 3동", "육성사 4동", "육성사 5동", "육성사 6동", "육성사 7동"];
-    var target = document.getElementById("good");
-    if (e.value == "0") var d = donsa_0;
-    else if (e.value == "1") var d = donsa_1;
-    else if (e.value == "2") var d = donsa_2;
-    target.options.length = 0;
-    for (x in d) {
-        var opt = document.createElement("option");
-        opt.value = d[x];
-        opt.innerHTML = d[x];
-        target.appendChild(opt);
-        opt.index = x;
-    }
+    $(".removegood").remove();
+    alert(e.value + "번째 아이템을 선택함.");    
+//    console.log(useriddata[e.value-1].buildings);
+    
+    var donsaArray = useriddata[e.value-1].buildings;
+    
+//    $("#good").append("<option value='"+ 0 +"'>동선택</option>");
+    $.each (donsaArray, function (index_building, donsaOne){
+        var donsaName= donsaOne["buildingname"];
+        $("#good").append("<option class='removegood' value='"+ index_building +"'>"+donsaName+"</option>");
+    })
 }
 
 $('ul.tabs li:last-child').click(function () {
@@ -763,7 +761,6 @@ $('ul.tabs li:last-child').click(function () {
 })
 
 var ajaxCallback6 = function (data) {
-    $(".unique6").remove();
     var result = '';
     var dailynews = data;
     result += '<tr>';
@@ -819,12 +816,18 @@ var ajaxCallback6 = function (data) {
     result += '</tr>';
     $('#tableList6').append(result).addClass("unique6");
     $('#seltable').attr("rowspan", selsize);
-    var data6 = $("#good").val(); //var data6 = document.getElementById("good");
-    $('#seltable').text(data6); //document.getElementById("seltable").innerHTML = data6.options[data6.selectedIndex].value;
+    var data6 = $("#good").val();
+    $('#seltable').text(data6);
 };
 
 //농장별 일보 출력
 $("#FarmDonsaDailyReport").submit(function(){
+    
+//    if($(".unique6")){ //만약 유니크6가 있으면
+        $(".unique6").remove();
+//        return;
+//    }
+    
     var data6idx = $("#good option").index($("#good option:selected"));    
     // 선택된 월(날짜문자열)과 셀렉트박스에서 선택된 돈사아이디(buildingid) 값을 name/value 형태로 담는다.
     var allData = { "pick_month": $(".mdate").val() , "buildingid": data6idx };
