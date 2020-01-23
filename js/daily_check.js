@@ -606,7 +606,6 @@ $("#FarmMonthlyReport").submit(function(){
 
 //농장별 일보 테이블 출력
 var ajaxCallback5 = function (data) {
-    $(".unique5").remove();
     var result = '';
     var dailynews5 = data;
         
@@ -670,7 +669,11 @@ var ajaxCallback5 = function (data) {
 
 //농장별 일보 출력
 $("#FarmDailyReport").submit(function(){
-    var allData5 = { "pick_month": $(".mdate").val() , "locationid": 1 };
+    $(".unique5").empty();
+    
+    var data5idx = $("#selectBox2 option").index($("#selectBox2 option:selected"));
+    console.log(data5idx);
+    var allData5 = { "pick_month": $(".mdate").val() , "locationid": data5idx };
      //동적으로 원격에 있는 JSON 파일(결과값)을 로드 
     $.ajax({
         url: "//101.101.162.62:8081/smartdaily/req_location_daily"
@@ -694,6 +697,7 @@ var useridCallback = function (data) {
     
     result += '<tr>';
     
+    $("#selectBox2").append("<option value='0'>농장 선택</option>");
     $("#selectBox").append("<option value='0'>농장 선택</option>");
    
     //  농장 반복
@@ -701,7 +705,8 @@ var useridCallback = function (data) {
         var nname = nongjang["locationname"];
         var nid = nongjang["locationid"];
         var donsaArray = nongjang["buildings"];
-       
+        
+        $("#selectBox2").append("<option value='"+ nid +"'>"+ nname +"</option>");       
         $("#selectBox").append("<option value='"+ nid +"'>"+ nname +"</option>");
         
         if (donsaArray != null) {
@@ -718,7 +723,7 @@ var useridCallback = function (data) {
             })
         }
     });
-    $('#tempdata').append(result);
+    $('#tempdata').append(result).addClass("removetem");
     $(".temtable6").each(function () {
         var rows = $(".temtable6:contains('" + $(this).text() + "')");
         if (rows.length > 1) {
@@ -731,19 +736,20 @@ var useridCallback = function (data) {
 //일보조회 셀렉트
 function categoryChange(e) {
     $(".removegood").remove();
-    alert(e.value + "번째 아이템을 선택함.");    
-//    console.log(useriddata[e.value-1].buildings);
     
     var donsaArray = useriddata[e.value-1].buildings;
     
-//    $("#good").append("<option value='"+ 0 +"'>동선택</option>");
     $.each (donsaArray, function (index_building, donsaOne){
         var donsaName= donsaOne["buildingname"];
-        $("#good").append("<option class='removegood' value='"+ index_building +"'>"+donsaName+"</option>");
+        $("#good").append("<option class='removegood' value='"+ donsaName +"'>"+donsaName+"</option>");
     })
 }
 
-$('ul.tabs li:last-child').click(function () {
+$('ul.tabs li').click(function () {
+    $(".removetem").empty();
+    $("#selectBox").empty();
+    $("#selectBox2").empty();
+    
     // 유저 인덱스를 가져온다.
     var useridx = {"useridx":1};
     
@@ -763,10 +769,7 @@ $('ul.tabs li:last-child').click(function () {
 var ajaxCallback6 = function (data) {
     var result = '';
     var dailynews = data;
-    result += '<tr>';
-    result += '<td id="seltable"></td>';
-    var selsize = 0;
-    
+        
     var sum1 = 0;
     var sum2 = 0;
     var sum3 = 0;
@@ -776,7 +779,7 @@ var ajaxCallback6 = function (data) {
 
     //  농장 반복
     $.each(dailynews, function (index_nongjang, nongjang) {
-        selsize += dailynews.length-1;
+        
         var gap1 = nongjang["recordday"];
         var gap2 = nongjang["start_count"];
         var gap3 = nongjang["in_count"];
@@ -793,6 +796,8 @@ var ajaxCallback6 = function (data) {
         sum5 += gap7;
         sum6 += gap8;
         
+        result += '<tr>';
+        result += '<td class="seltable"></td>';
         result += '<td>' + gap1 + '</td>';
         result += '<td>' + gap2 + '</td>';
         result += '<td>' + gap3 + '</td>';
@@ -815,18 +820,20 @@ var ajaxCallback6 = function (data) {
     result += '<td style="background: #ddd;">' + sum6 + '</td>';
     result += '</tr>';
     $('#tableList6').append(result).addClass("unique6");
-    $('#seltable').attr("rowspan", selsize);
     var data6 = $("#good").val();
-    $('#seltable').text(data6);
+    $('.seltable').text(data6);
+    $(".seltable").each(function () {
+        var rows = $(".seltable:contains('" + $(this).text() + "')");
+        if (rows.length > 1) {
+            rows.eq(0).attr("rowspan", rows.length);
+            rows.not(":eq(0)").remove();
+        }
+    });    
 };
 
 //농장별 일보 출력
 $("#FarmDonsaDailyReport").submit(function(){
-    
-//    if($(".unique6")){ //만약 유니크6가 있으면
-        $(".unique6").remove();
-//        return;
-//    }
+    $(".unique6").empty();
     
     var data6idx = $("#good option").index($("#good option:selected"));    
     // 선택된 월(날짜문자열)과 셀렉트박스에서 선택된 돈사아이디(buildingid) 값을 name/value 형태로 담는다.
@@ -997,6 +1004,8 @@ $(document).ready(function () {
         var pmonth = new Date(year, Number(month) + 1);
         $('.mdate').val(pmonth.toISOString().substring(0,7));
     }
+//    $(document).ready(function() {$(".mdate").keydown(function(key) {if (key.keyCode == 13) {alert("엔터키를 눌렀습니다.");}});});
+//    $(".mdate").keyup(function(e){if(e.keyCode == 13)  alert("엔터키를 눌렀습니다."); });
     datepicker_default.beforeShow = function () {
         var selectDate = $(".mdate").val().split("-");
         var year = Number(selectDate[0]);

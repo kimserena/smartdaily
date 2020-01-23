@@ -17,16 +17,6 @@ body{min-width:1400px; scroll-behavior: smooth;}
 header{position: fixed; top:0; background: #fff; height: 110px; width:100%; z-index: 5; border-bottom: 1px solid #ddd;}
 header .header-inner{width: 1400px; margin: 0 auto;}
 
-/*
-header.sticky .logo img{height: 50px;}
-header.sticky .nav ul li a{font-size:20px; line-height: 80px; padding:;}
-header.sticky .estimate_enquiry li a{font-size: 20px; line-height: 80px;}
-header.sticky .sub-navi {}
-header.sticky .sub-menu{margin-left: ; font-size:;}
-header.sticky .login{margin-top:-15px;}
-*/
-
-
 /*nav*/
 .nav{overflow: hidden; display: inline-block; width: 67.9%;text-align: center; position: relative;}
 .nav ul li{display: inline-block; width: 20%;}
@@ -44,7 +34,6 @@ header.sticky .login{margin-top:-15px;}
 .sub-menu {padding-left: 23.8%;}
 .sub-menu ul {float: left; width: 21.2%;}
 .sub-menu ul li {width: 100%;}
-/*.sub-menu .sub4{background: url(../img/backgroundgray.png) no-repeat right; background-size: auto 100%; height: 110px; margin: 23px 0;}*/
 .sub-menu ul li a{font-weight: bold; font-size: 18px; width: 100%; display: inline-block; padding: 12px 0px; text-align: center;}
 .sub-menu ul li a:hover{color:#0c2340; /*background-color: #F3F6FC;*/ color: #0050a5;}
 
@@ -52,11 +41,9 @@ header.sticky .login{margin-top:-15px;}
 .login{display: inline-block; text-align: right; width: 10%; height: 110px; vertical-align: top; line-height: 110px;}
 .login li .line{border-right: 1px solid #ddd; margin-left: px; height: 10px; display: inline-block;}
 .login button{border: none; background: #fff; color:#444; font-size: 15px; padding: 0px 0px; cursor: pointer;}
-/*.login h2{color:; display: inline-block; margin-right: 10%; cursor: default;}*/
 .login ul{display: inline-block;}
 .login ul li{display: inline-block;}
 .login ul li button{display: inline-block; padding: 5px; font-size:px; font-weight: bold; color:#555;}
-/*.xi-profile,.xi-user-plus{font-size: 20px; margin-right: 3px; vertical-align: bottom;}*/
 
 
 /*로그인 모달*/
@@ -130,11 +117,6 @@ section{background: ; margin-top: 0px;}
 /*비쥬얼*/
 div#slideObject {width:100%; min-width:1100px; min-height:100vh; display:flex; flex-direction:column; position:relative; color:#fff; background: url(../img/img_v_4.jpg);background-size: 100% 100%; background-position: center center; cursor: default;}
 div#slideObject > div { width:1100px; left:50% !important; margin-top:18%; margin-left:-650px; }
-/*
-div#slideObject > div > h2 { font-size:6em; }
-div#slideObject > div > h2 > span:first-of-type { color:#f99; border-top:3px solid #f99; }
-div#slideObject > div > h2 > span:last-of-type { color:#cbff8e; border-top:3px solid #cbff8e; }
-*/
 
 /*.main-visual-info{position: absolute; top:200px;}*/
 .main-visual-info h2:first-child{color:#fff; font-size:1.5em;}
@@ -167,7 +149,7 @@ div#slideObject > div > h2 > span:last-of-type { color:#cbff8e; border-top:3px s
 .button:hover span:after {opacity: 1; right: 0;}
 
 /*footer*/
-footer{border-top:1px solid #eee; /*background: #212529;*/ height: 50px; /*box-shadow: -15px 10px 20px 5px #222 inset;*/ cursor: default; height: 80px;}
+footer{border-top:1px solid #eee; height: 50px; cursor: default; height: 80px;}
 #footer-logo img{float: left; -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%); width: 15%; margin-top: 15px; margin-right: 30px;}
 #company-info{font-size:15px; padding-top: 15px;}
@@ -178,7 +160,6 @@ footer{border-top:1px solid #eee; /*background: #212529;*/ height: 50px; /*box-s
 #myBtn {display: none; position: fixed; bottom: 0px; right: 50px; z-index: 5; font-size: 18px; border: none; background-color: #444; cursor: pointer; padding:  5px 10px; transition: all 0.3s ease-in-out; box-shadow: 0px 1px 3px 0px #ddd; opacity: 0.8;}
 #myBtn i{font-size: 40px; padding: 0 10px; color:white;}
 #myBtn p{color:white; font-size: 16px;}
-#myBtn:hover {background-color: /*DodgerBlue RoyalBlue*/;}
 
 /*-----------*/
 
@@ -203,7 +184,7 @@ footer{border-top:1px solid #eee; /*background: #212529;*/ height: 50px; /*box-s
 .dropdown-content {display: none; position: absolute; background: rgba(255,255,255,1); z-index: 1;}
 .dropdown-content a {float: none; padding: 12px 16px; text-decoration: none; display: block; text-align: left;}
 .dropdown-content a{display: block; width: 220px;  -moz-transition: all .5s;    -webkit-transition: all .5s;    -o-transition: all .5s;    transition: all .5s;
-    -webkit-box-sizing: border-box;    -moz-box-sizing: border-box;    box-sizing: border-box; /*border-left: 1px solid #ddd; border-right: 1px solid #ddd; border-top:1px solid #ddd;*/}
+    -webkit-box-sizing: border-box;    -moz-box-sizing: border-box;    box-sizing: border-box; /}
 .dropdown button.dropbtn i{color:; margin-left: 50px; margin-top: -5px;}
 .dropdown-content a:hover {background: rgba(255,255,255,0.2); color:#0050a5;}
 .dropdown:hover .dropdown-content {  display: block;}
@@ -236,8 +217,6 @@ footer{border-top:1px solid #eee; /*background: #212529;*/ height: 50px; /*box-s
 /* Style the buttons inside the tab */
 .tab button {background-color: inherit; border: none; outline: none; float: left; cursor: pointer; width: 33.36%; height: 65px; transition: 0.3s; font-size: 18px; border:1px solid #ddd; margin-left: -0.7px; font-weight: bold; color:#888;}
 .tab button:first-child{margin-left: 0px;}
-/*.tab button:nth-child(2):before{display: block; content: ''; position: absolute; top: 50%; left: 0; width: 1px; height: 20px; margin: -10px 0 0; background: #c9c9c9;}*/
-/*.tab button:nth-child(3):before{display: block; content: ''; position: absolute; top: 50%; left: 0; width: 1px; height: 20px; margin: -10px 0 0; background: #c9c9c9;}*/
 /* Change background color of buttons on hover */
 .tab button:hover {background-color: #fff;}
 /* Create an active/current tablink class */
@@ -296,7 +275,6 @@ footer{border-top:1px solid #eee; /*background: #212529;*/ height: 50px; /*box-s
 
 /*개인정보 관리*/
 .user_info{margin: 40px 0;}
-/*.user_info .form_col-100 input[type=text]{width: %;}*/
 .user_info ul li:first-child{border-top:1px solid #ddd;}
 .user_info ul li{border-bottom: 1px solid #ddd;}
 .user_info .colgroup1{display: inline-block; width: 15% !important; background: #eee; height: 50px; vertical-align: top; width: 168px; height: 70px; background: #f9f9f9; padding: 25px 0 0 20px;   font-weight: 700;}
@@ -306,7 +284,7 @@ footer{border-top:1px solid #eee; /*background: #212529;*/ height: 50px; /*box-s
 /*탭_탭*/
 ul.tabs{margin: 0px; padding: 0px; list-style: none;}
 ul.tabs li{background: none; color: #222; display: inline-block; padding: 9px 17px; cursor: pointer; border-top-left-radius: 10px; border-top-right-radius: 10px; border-left:1px solid #ddd; border-top:1px solid #ddd; border-right: 1px solid #ddd;}
-ul.tabs li.current{background: /*#025e9c*/ #228EC1; color: #fff;}
+ul.tabs li.current{background: #228EC1; color: #fff;}
 .tab-content{display: none;	background: ; padding: 30px 0px; position: relative; border-top:1px solid #ddd;}
 .tab-content.current{display: inherit;}
 
@@ -319,10 +297,9 @@ ul.tabs li.current{background: /*#025e9c*/ #228EC1; color: #fff;}
 
 /*일보조회*/
 .daily_check{margin: 40px 0;}
-.daily_check form button, .daily_check select, .daily_check input[type=text], .daily_check form input[type=submit]{background: #fff; border:1px solid #e2e2e2; padding: 10px 15px; font-size: 15px;}
+.daily_check form button, .daily_check select, .daily_check input[type=text], .daily_check form input[type=submit]{background: #fff; border:1px solid #e2e2e2; padding: 10px 15px; font-size: 15px; cursor: default;}
 .daily_check form input[type=submit]{cursor: pointer; background: #fdfdfd;}
 .daily_check button[type=button].e-download{position: absolute; top:30px; right: 0px; border: 1px solid #e2e2e2; background: #fdfdfd; padding: 10px 20px; cursor: pointer; font-size: 15px;}
-/*.start-date, .end-date{cursor: default;}*/
 table{width: 100%; margin-top: 15px; border-collapse: collapse; text-align: center;}
 table th, table td {border: 1px solid #777;}
 
@@ -345,7 +322,6 @@ input#name{width: 200px;}
 .form_row textarea{width: 500px; /* Full width */ padding: 12px; /* Some padding */ border: 1px solid #ccc; /* Gray border */ border-radius: px; /* Rounded borders */
   box-sizing: border-box; /* Make sure that padding and width stays in place */ margin-top: px; /* Add a top margin */ margin-bottom: px; /* Bottom margin */
   resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */ font-size:16px; height: 276px;}
-/*.where {display: block; margin: 25px 15px; font-size: 11px; color: #000; text-decoration: none;} */
 .filebox input[type="file"] {position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0;}
 .filebox label {display: inline-block; padding: .5em .75em; color: #999; vertical-align: middle; background-color: #fdfdfd; cursor: pointer; border: 1px solid #ebebeb; border-bottom-color: #e2e2e2;}
 /* named upload */
@@ -359,12 +335,9 @@ input#name{width: 200px;}
 #customer .title h4{font-size:18px;}
 #customer .content p{display: inline-block; font-size:13px; /*margin-right: 3px;*/}
 #customer .content h3{font-size:18px; display: inline-block; color: ;}
-/*#customer .content h3 i{margin-right: 5px; color:#fff; background:#ED6D00; padding: 15px 16px; border-radius: 50px; margin-left: -19px; border:1px solid #ddd;}*/
 
-/*.form_row label {margin-bottom: 10px; display: inline-block; width: 15%;}*/
 .form_row ul{margin-bottom: 20px;}
 .form_row ul li:first-child{border-top:1px solid #ddd;}
-/*.form_row  ul li:last-child .colgroup1{height: 120px;}*/
 .form_row ul li{border-bottom: 1px solid #ddd;}
 .form_row .colgroup1{display: inline-block; width: 120px; height: auto; vertical-align: top; height: 50px; background: #fff; padding: 25px 0 0 20px; font-weight: 700; border-right: 1px solid #ddd;}
 .form_row ul li.heighthigh .colgroup1{height: 276px;}

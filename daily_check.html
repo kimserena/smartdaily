@@ -108,8 +108,8 @@
                                     </ul>
                                     <div id="tab-1" class="tab-content current">
                                         <form name="frmEX" autocomplete="off" id="AccrueMonthlyReport">
-                                            <input type="text" name="sdate" id="sdate" size="7" maxlength="7" value="" placeholder="시작 월" title="시작 월 입력" /> 부터
-                                            <input type="text" name="edate" id="edate" size="7" maxlength="7" value="" placeholder="종료 월" title="종료 월 입력" /> 까지
+                                            <input type="text" name="sdate" id="sdate" size="7" maxlength="7" value="" placeholder="시작 월" title="시작 월 입력" / readonly> 부터
+                                            <input type="text" name="edate" id="edate" size="7" maxlength="7" value="" placeholder="종료 월" title="종료 월 입력" / readonly> 까지
                                             <input type="submit" value="조회" class="check_btn"> </form>
                                         <button type="button" class="e-download" onclick="fnExcelReport('table1','AccrueMonthlyReport');">엑셀 다운로드</button>
                                         <table border="1" id="table1">
@@ -133,7 +133,7 @@
                                     </div>
                                     <div id="tab-2" class="tab-content">
                                         <form name="frmEX" autocomplete="off" id="AllMonthlyReport">
-                                            <input type="text" name="mdate2" class="mdate" size="7" maxlength="7" value="" placeholder="월 선택" title="조회할 월 입력" />
+                                            <input type="text" name="mdate2" class="mdate" size="7" maxlength="7" value="" placeholder="월 선택" title="조회할 월 입력" / readonly>
                                             <input type="submit" value="조회" class="check_btn"> </form>
                                         <button type="button" class="e-download" onclick="fnExcelReport('table2','AllMonthlyReport');">엑셀 다운로드</button>
                                         <table border="1" id="table2">
@@ -157,7 +157,7 @@
                                     </div>
                                     <div id="tab-3" class="tab-content">
                                         <form name="frmEX" autocomplete="off" id="TotalDailyReport">
-                                            <input type="text" name="mdate3" class="mdate" size="7" maxlength="7" value="" placeholder="월 선택" />
+                                            <input type="text" name="mdate3" class="mdate" size="7" maxlength="7" value="" placeholder="월 선택" / readonly>
                                             <input type="submit" value="조회" class="check_btn"> </form>
                                         <button type="button" class="e-download" onclick="fnExcelReport('table3','TotalDailyReport');">엑셀 다운로드</button>
                                         <table border="1" id="table3">
@@ -179,7 +179,7 @@
                                     </div>
                                     <div id="tab-4" class="tab-content">
                                         <form name="frmEX" autocomplete="off" id="FarmMonthlyReport">
-                                            <input type="text" name="mdate4" class="ydate" size="7" maxlength="7" value="" placeholder="년 선택" />
+                                            <input type="text" name="mdate4" class="ydate" size="7" maxlength="7" value="" placeholder="년 선택" / readonly>
                                             <select id="sel">
                                                 <option value="농장 선택">농장 선택</option>
                                                 <option value="파주 농장">파주 농장</option>
@@ -207,11 +207,8 @@
                                     </div>
                                     <div id="tab-5" class="tab-content">
                                         <form name="frmEX" autocomplete="off" id="FarmDailyReport">
-                                            <input type="text" name="mdate5" class="mdate" size="7" maxlength="7" value="" placeholder="월 선택" />
-                                            <select>
-                                                <option value="a">농장 선택</option>
-                                                <option value="b">파주 농장</option>
-                                                <option value="c">의정부 농장</option>
+                                            <input type="text" name="mdate5" class="mdate" size="7" maxlength="7" value="" placeholder="월 선택" / readonly>
+                                            <select id="selectBox2">
                                             </select>
                                             <input type="submit" value="조회" class="check_btn"> </form>
                                         <button type="button" class="e-download" onclick="fnExcelReport('table5','FarmDailyReport');">엑셀 다운로드</button>
@@ -234,7 +231,7 @@
                                     </div>
                                     <div id="tab-6" class="tab-content">
                                         <form name="frmEX" autocomplete="off" id="FarmDonsaDailyReport">
-                                            <input type="text" name="mdate6" class="mdate" size="7" maxlength="7" value="" placeholder="월 선택" />
+                                            <input type="text" name="mdate6" class="mdate" size="7" maxlength="7" value="" placeholder="월 선택" / readonly>
                                             <select id="selectBox" onchange="categoryChange(this)">
                                             </select>
                                             <select id="good">
