@@ -22,9 +22,9 @@
             </div>
             <div class="nav">
                 <ul>
-                    <li><a href="service_info.html" class="nav_down">서비스 소개</a></li>
-                    <li><a href="user_info.html" class="nav_down">서비스 이용</a></li>
-                    <li><a href="notice.html" class="nav_down">고객센터</a></li>
+                    <li><a href="javascript:void(0)" class="nav_down">서비스 소개</a></li>
+                    <li><a href="javascript:void(0)" class="nav_down">서비스 이용</a></li>
+                    <li><a href="javascript:void(0)" class="nav_down">고객센터</a></li>
                     <li>
                         <a href="estimate_enquiry.html">　</a>
                     </li>
@@ -114,7 +114,7 @@
                                         <button type="button" class="e-download" onclick="fnExcelReport('table1','AccrueMonthlyReport');">엑셀 다운로드</button>
                                         <table border="1" id="table1">
                                             <thead>
-                                                <tr style="background: #ddd;">
+                                                <tr style="background: #f7f7f7;">
                                                     <td>구분</td>
                                                     <td>소재지별</td>
                                                     <td>돈사</td>
@@ -138,7 +138,7 @@
                                         <button type="button" class="e-download" onclick="fnExcelReport('table2','AllMonthlyReport');">엑셀 다운로드</button>
                                         <table border="1" id="table2">
                                             <thead>
-                                                <tr style="background: #ddd;">
+                                                <tr style="background: #f7f7f7;">
                                                     <td>구분</td>
                                                     <td>소재지별</td>
                                                     <td>돈사</td>
@@ -162,7 +162,7 @@
                                         <button type="button" class="e-download" onclick="fnExcelReport('table3','TotalDailyReport');">엑셀 다운로드</button>
                                         <table border="1" id="table3">
                                             <thead>
-                                                <tr style="background: #ddd;">
+                                                <tr style="background: #f7f7f7;">
                                                     <td>구분</td>
                                                     <td>날짜</td>
                                                     <td>시작</td>
@@ -180,7 +180,7 @@
                                     <div id="tab-4" class="tab-content">
                                         <form name="frmEX" autocomplete="off" id="FarmMonthlyReport">
                                             <input type="text" name="mdate4" class="ydate" size="7" maxlength="7" value="" placeholder="년 선택" / readonly>
-                                            <select id="sel">
+                                            <select id="selectBox4">
                                                 <option value="농장 선택">농장 선택</option>
                                                 <option value="파주 농장">파주 농장</option>
                                                 <option value="의정부 농장">의정부 농장</option>
@@ -189,7 +189,7 @@
                                         <button type="button" class="e-download" onclick="fnExcelReport('table4','FarmMonthlyReport');">엑셀 다운로드</button>
                                         <table border="1" id="table4">
                                             <thead>
-                                                <tr style="background: #ddd;">
+                                                <tr style="background: #f7f7f7;">
                                                     <td>구분</td>
                                                     <td>돈사</td>
                                                     <td>월별</td>
@@ -208,13 +208,13 @@
                                     <div id="tab-5" class="tab-content">
                                         <form name="frmEX" autocomplete="off" id="FarmDailyReport">
                                             <input type="text" name="mdate5" class="mdate" size="7" maxlength="7" value="" placeholder="월 선택" / readonly>
-                                            <select id="selectBox2">
+                                            <select id="selectBox5">
                                             </select>
                                             <input type="submit" value="조회" class="check_btn"> </form>
                                         <button type="button" class="e-download" onclick="fnExcelReport('table5','FarmDailyReport');">엑셀 다운로드</button>
                                         <table border="1" id="table5">
                                             <thead>
-                                                <tr style="background: #ddd;">
+                                                <tr style="background: #f7f7f7;">
                                                     <td>구분</td>
                                                     <td>날짜</td>
                                                     <td>시작</td>
@@ -232,7 +232,7 @@
                                     <div id="tab-6" class="tab-content">
                                         <form name="frmEX" autocomplete="off" id="FarmDonsaDailyReport">
                                             <input type="text" name="mdate6" class="mdate" size="7" maxlength="7" value="" placeholder="월 선택" / readonly>
-                                            <select id="selectBox" onchange="categoryChange(this)">
+                                            <select id="selectBox6" onchange="categoryChange(this)">
                                             </select>
                                             <select id="good">
                                                 <option>돈사 선택</option>
@@ -241,7 +241,7 @@
                                         <button type="button" class="e-download" onclick="fnExcelReport('table6','FarmDonsaDailyReport');">엑셀 다운로드</button>
                                         <table border="1" id="table6">
                                             <thead>
-                                                <tr style="background: #ddd;">
+                                                <tr style="background: #f7f7f7;">
                                                     <td>구분</td>
                                                     <td>날짜</td>
                                                     <td>시작</td>
