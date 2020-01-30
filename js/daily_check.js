@@ -3,10 +3,9 @@ var tempstring = "";
 /*일보조회*/
 //전체통합월보(누적)테이블출력
 var ajaxCallback = function (data) {
-    $(".unique").remove();
     var result = '';
-    var dailynews = data["전체통합월보(누적)"];
-    var jaga = dailynews["자가"];
+    var dailynews = data["report"];
+    var jaga = dailynews["jaga"];
     result += '<tr>';
     result += '<td id="jagatable">자가</td>';
     var jagasize = 0;
@@ -21,8 +20,8 @@ var ajaxCallback = function (data) {
     var sum8 = 0;
     //  농장 반복
     $.each(jaga, function (index_nongjang, nongjang) {
-        var nname = nongjang["농장이름"];
-        var donsaArray = nongjang["돈사"];
+        var nname = nongjang["locationname"];
+        var donsaArray = nongjang["building"];
         var hap1 = 0;
         var hap2 = 0;
         var hap3 = 0;
@@ -35,17 +34,17 @@ var ajaxCallback = function (data) {
             jagasize += donsaArray.length + 1;
             //  돈사 데이터 반복
             $.each(donsaArray, function (index_donsa, donsa) {
-                var dname = donsa["이름"];
+                var dname = donsa["buildingname"];
                 result += '<td class = "sojaeji">' + nname + '</td>';
-                result += '<td>' + nname + '농장의 ' + dname + '</td>';
-                var gap1 = donsa["값1"];
-                var gap2 = donsa["값2"];
-                var gap3 = donsa["값3"];
-                var gap4 = donsa["값4"];
-                var gap5 = donsa["값5"];
-                var gap6 = donsa["값6"];
-                var gap7 = donsa["값7"];
-                var gap8 = donsa["값8"];
+                result += '<td>' + dname + '</td>';
+                var gap1 = donsa["areasize"];
+                var gap2 = donsa["start_count"];
+                var gap3 = donsa["in_count"];
+                var gap4 = donsa["move_count"];
+                var gap5 = donsa["die_count"];
+                var gap6 = donsa["out_count"];
+                var gap7 = donsa["expect_count"];
+                var gap8 = donsa["ai_count"];
                 hap1 += gap1;
                 hap2 += gap2;
                 hap3 += gap3;
@@ -87,13 +86,13 @@ var ajaxCallback = function (data) {
             sum8 += hap8;
         }
     });
-    var wetak = dailynews["위탁"];
+    var wetak = dailynews["wetak"];
     result += '<tr>';
     result += '<td id="wetaktable" rowspan="0">위탁</td>';
     //  농장 반복
     $.each(wetak, function (index_wnongjang, wnongjang) {
-        var wnname = wnongjang["농장이름"];
-        var wdonsaArray = wnongjang["돈사"];
+        var wnname = wnongjang["locationname"];
+        var wdonsaArray = wnongjang["building"];
         var whap1 = 0;
         var whap2 = 0;
         var whap3 = 0;
@@ -106,17 +105,17 @@ var ajaxCallback = function (data) {
             wetaksize += wdonsaArray.length + 1;
             //  돈사 데이터 반복
             $.each(wdonsaArray, function (index_wdonsa, wdonsa) {
-                var wdname = wdonsa["이름"];
+                var wdname = wdonsa["buildingname"];
                 result += '<td class="wsojaeji">' + wnname + '</td>';
-                result += '<td>' + wnname + '농장의 ' + wdname + '</td>';
-                var wgap1 = wdonsa["값1"];
-                var wgap2 = wdonsa["값2"];
-                var wgap3 = wdonsa["값3"];
-                var wgap4 = wdonsa["값4"];
-                var wgap5 = wdonsa["값5"];
-                var wgap6 = wdonsa["값6"];
-                var wgap7 = wdonsa["값7"];
-                var wgap8 = wdonsa["값8"];
+                result += '<td>' + wdname + '</td>';
+                var wgap1 = wdonsa["areasize"];
+                var wgap2 = wdonsa["start_count"];
+                var wgap3 = wdonsa["in_count"];
+                var wgap4 = wdonsa["move_count"];
+                var wgap5 = wdonsa["die_count"];
+                var wgap6 = wdonsa["out_count"];
+                var wgap7 = wdonsa["expect_count"];
+                var wgap8 = wdonsa["ai_count"];
                 whap1 += wgap1;
                 whap2 += wgap2;
                 whap3 += wgap3;
@@ -194,13 +193,17 @@ var ajaxCallback = function (data) {
 
 //전체통합월보(누적) 출력
 $("#AccrueMonthlyReport").submit(function(){
+    $(".unique").empty();
     
+    var allData = {"useridx": 1, "start_month": $("#sdate").val(), "end_month": $("#edate").val()};
     // start_month 체크박스의 선택된 값을 가져온다.
 
     //동적으로 원격에 있는 JSON 파일(결과값)을 로드 
     $.ajax({
-        url: "1.json"
+        url: "http://101.101.162.62:8081/smartdaily/req_monthly_all1"
         , dataType: "json"
+        , type: "POST"
+        , data: allData
         , success: ajaxCallback
         , error: function () {
             alert("에러발생");
@@ -212,10 +215,9 @@ $("#AccrueMonthlyReport").submit(function(){
 
 //전체통합월보(월별) 테이블 출력
 var ajaxCallback2 = function (data) {
-    $(".unique2").remove();
     var result = '';
-    var Adailynews = data["전체통합월보(누적)"];
-    var Ajaga = Adailynews["자가"];
+    var Adailynews = data["report"];
+    var Ajaga = Adailynews["jaga"];
     result += '<tr>';
     result += '<td id="Ajagatable">자가</td>';
     var Ajagasize = 0;
@@ -230,8 +232,8 @@ var ajaxCallback2 = function (data) {
     var sum8 = 0;
     //  농장 반복
     $.each(Ajaga, function (Aindex_nongjang, Anongjang) {
-        var Anname = Anongjang["농장이름"];
-        var AdonsaArray = Anongjang["돈사"];
+        var Anname = Anongjang["locationname"];
+        var AdonsaArray = Anongjang["building"];
         var hap1 = 0;
         var hap2 = 0;
         var hap3 = 0;
@@ -244,17 +246,17 @@ var ajaxCallback2 = function (data) {
             Ajagasize += AdonsaArray.length + 1;
             //  돈사 데이터 반복
             $.each(AdonsaArray, function (Aindex_donsa, Adonsa) {
-                var Adname = Adonsa["이름"];
+                var Adname = Adonsa["buildingname"];
                 result += '<td class = "Asojaeji">' + Anname + '</td>';
-                result += '<td>' + Anname + '농장의 ' + Adname + '</td>';
-                var gap1 = Adonsa["값1"];
-                var gap2 = Adonsa["값2"];
-                var gap3 = Adonsa["값3"];
-                var gap4 = Adonsa["값4"];
-                var gap5 = Adonsa["값5"];
-                var gap6 = Adonsa["값6"];
-                var gap7 = Adonsa["값7"];
-                var gap8 = Adonsa["값8"];
+                result += '<td>' + Adname + '</td>';
+                var gap1 = Adonsa["areasize"];
+                var gap2 = Adonsa["start_count"];
+                var gap3 = Adonsa["in_count"];
+                var gap4 = Adonsa["move_count"];
+                var gap5 = Adonsa["die_count"];
+                var gap6 = Adonsa["out_count"];
+                var gap7 = Adonsa["expect_count"];
+                var gap8 = Adonsa["ai_count"];
                 hap1 += gap1;
                 hap2 += gap2;
                 hap3 += gap3;
@@ -296,13 +298,13 @@ var ajaxCallback2 = function (data) {
             sum8 += hap8;
         }
     });
-    var Awetak = Adailynews["위탁"];
+    var Awetak = Adailynews["wetak"];
     result += '<tr>';
     result += '<td id="Awetaktable" rowspan="0">위탁</td>';
     //  농장 반복
     $.each(Awetak, function (Aindex_wnongjang, Awnongjang) {
-        var Awnname = Awnongjang["농장이름"];
-        var AwdonsaArray = Awnongjang["돈사"];
+        var Awnname = Awnongjang["locationname"];
+        var AwdonsaArray = Awnongjang["building"];
         var whap1 = 0;
         var whap2 = 0;
         var whap3 = 0;
@@ -315,17 +317,17 @@ var ajaxCallback2 = function (data) {
             Awetaksize += AwdonsaArray.length + 1;
             //  돈사 데이터 반복
             $.each(AwdonsaArray, function (Aindex_wdonsa, Awdonsa) {
-                var Awdname = Awdonsa["이름"];
+                var Awdname = Awdonsa["buildingname"];
                 result += '<td class="Awsojaeji">' + Awnname + '</td>';
-                result += '<td>' + Awnname + '농장의 ' + Awdname + '</td>';
-                var wgap1 = Awdonsa["값1"];
-                var wgap2 = Awdonsa["값2"];
-                var wgap3 = Awdonsa["값3"];
-                var wgap4 = Awdonsa["값4"];
-                var wgap5 = Awdonsa["값5"];
-                var wgap6 = Awdonsa["값6"];
-                var wgap7 = Awdonsa["값7"];
-                var wgap8 = Awdonsa["값8"];
+                result += '<td>' + Awdname + '</td>';
+                var wgap1 = Awdonsa["areasize"];
+                var wgap2 = Awdonsa["start_count"];
+                var wgap3 = Awdonsa["in_count"];
+                var wgap4 = Awdonsa["move_count"];
+                var wgap5 = Awdonsa["die_count"];
+                var wgap6 = Awdonsa["out_count"];
+                var wgap7 = Awdonsa["expect_count"];
+                var wgap8 = Awdonsa["ai_count"];
                 whap1 += wgap1;
                 whap2 += wgap2;
                 whap3 += wgap3;
@@ -404,10 +406,15 @@ var ajaxCallback2 = function (data) {
 //전체통합월보(월별) 출력
 
 $("#AllMonthlyReport").submit(function(){
+    $(".unique2").empty();
+    
+    var allData2 = {"useridx": 1, "pick_month": $(".mdate").val()};
      //동적으로 원격에 있는 JSON 파일(결과값)을 로드 
     $.ajax({
-        url: "2.json"
+        url: "http://101.101.162.62:8081/smartdaily/req_monthly_all2"
         , dataType: "json"
+        , type: "POST"
+        , data: allData2
         , success: ajaxCallback2
         , error: function () {
             alert("에러발생");
@@ -689,7 +696,7 @@ $("#FarmDailyReport").submit(function(){
     var allData5 = { "pick_month": $(".mdate").val() , "locationid": data5idx };
      //동적으로 원격에 있는 JSON 파일(결과값)을 로드 
     $.ajax({
-        url: "//101.101.162.62:8081/smartdaily/req_location_daily"
+        url: "http://101.101.162.62:8081/smartdaily/req_location_daily"
         , dataType: "json"
         , type: "POST"
         , data: allData5
@@ -738,7 +745,7 @@ var useridCallback = function (data) {
             })
         }
     });
-    $('#tempdata').append(result).addClass("removetem");
+//    $('#tempdata').append(result).addClass("removetem");
     $(".temtable6").each(function () {
         var rows = $(".temtable6:contains('" + $(this).text() + "')");
         if (rows.length > 1) {
