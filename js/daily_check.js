@@ -14,6 +14,20 @@ var ajaxCallback = function (data) {
     
     today = getToday();
     
+    result += '<colgroup>';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '</colgroup>';
+    
     result += '<thead>';
     result += '<tr>';
     result += '<td style="font-size:18px; font-weight:bold; text-align:center;" rowspan="3" colspan="11">스마트데일리 통합월보(누적)</td>';
@@ -121,7 +135,7 @@ var ajaxCallback = function (data) {
         }
         if (donsaArray != null) {
             result += '<tr>';
-            result += '<td colspan="2" style="background: #eee; text-align:center;">소　　　　계</td>';
+            result += '<td colspan="2" style="background: #eee; text-align:center;">소&emsp;&emsp;&emsp;계</td>';
             result += '<td style="background: #eee;">' + hap1 + '</td>';
             result += '<td style="background: #eee;">' + hap2 + '</td>';
             result += '<td style="background: #eee;">' + hap3 + '</td>';
@@ -146,7 +160,7 @@ var ajaxCallback = function (data) {
     result += '<tbody id="WetakList">';
     
     result += '<tr>';
-    result += '<td colspan="11">　</td>';
+    result += '<td colspan="11">&nbsp;</td>';
     result += '</tr>';
     
     var wetak = dailynews["wetak"];
@@ -211,7 +225,7 @@ var ajaxCallback = function (data) {
         }
         if (wdonsaArray != null) {
             result += '<tr>';
-            result += '<td colspan="2" style="background: #eee; text-align:center;">소　　　　계</td>';
+            result += '<td colspan="2" style="background: #eee; text-align:center;">소&emsp;&emsp;&emsp;계</td>';
             result += '<td style="background: #eee;">' + whap1 + '</td>';
             result += '<td style="background: #eee;">' + whap2 + '</td>';
             result += '<td style="background: #eee;">' + whap3 + '</td>';
@@ -233,7 +247,7 @@ var ajaxCallback = function (data) {
     });
     
     result += '<tr>';
-    result += '<td colspan="3" style="background: #ddd; text-align:center;">합　　　　계</td>';
+    result += '<td colspan="3" style="background: #ddd; text-align:center;">합&emsp;&emsp;&emsp;계</td>';
     result += '<td style="background: #ddd;">' + sum1 + '</td>';
     result += '<td style="background: #ddd;">' + sum2 + '</td>';
     result += '<td style="background: #ddd;">' + sum3 + '</td>';
@@ -293,6 +307,20 @@ var ajaxCallback2 = function (data) {
     var result = '';
     var Adailynews = data["report"];
     var Ajaga = Adailynews["jaga"];
+    
+    result += '<colgroup>';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '<col width="9.09%">';
+    result += '</colgroup>';
     
     result += '<thead>';
     result += '<tr>';
@@ -404,7 +432,7 @@ var ajaxCallback2 = function (data) {
         }
         if (AdonsaArray != null) {            
             result += '<tr>';
-            result += '<td colspan="2" style="background: #eee; text-align:center;">소　　　　계</td>';
+            result += '<td colspan="2" style="background: #eee; text-align:center;">소&emsp;&emsp;&emsp;계</td>';
             result += '<td style="background: #eee;">' + hap1 + '</td>';
             result += '<td style="background: #eee;">' + hap2 + '</td>';
             result += '<td style="background: #eee;">' + hap3 + '</td>';
@@ -429,7 +457,7 @@ var ajaxCallback2 = function (data) {
     result += '<tbody id="AWetakList">';
     
     result += '<tr>';
-    result += '<td colspan="11">　</td>';
+    result += '<td colspan="11">&nbsp;</td>';
     result += '</tr>';
     
     var Awetak = Adailynews["wetak"];
@@ -494,7 +522,7 @@ var ajaxCallback2 = function (data) {
         }
         if (AwdonsaArray != null) {
             result += '<tr>';
-            result += '<td colspan="2" style="background: #eee; text-align:center;">소　　　　계</td>';
+            result += '<td colspan="2" style="background: #eee; text-align:center;">소&emsp;&emsp;&emsp;계</td>';
             result += '<td style="background: #eee;">' + whap1 + '</td>';
             result += '<td style="background: #eee;">' + whap2 + '</td>';
             result += '<td style="background: #eee;">' + whap3 + '</td>';
@@ -515,7 +543,7 @@ var ajaxCallback2 = function (data) {
         }
     });
     result += '<tr>';
-    result += '<td colspan="3" style="background: #ddd; text-align:center;">합　　　　계</td>';
+    result += '<td colspan="3" style="background: #ddd; text-align:center;">합&emsp;&emsp;&emsp;계</td>';
     result += '<td style="background: #ddd;">' + sum1 + '</td>';
     result += '<td style="background: #ddd;">' + sum2 + '</td>';
     result += '<td style="background: #ddd;">' + sum3 + '</td>';
@@ -571,6 +599,18 @@ $("#AllMonthlyReport").submit(function(){
 var ajaxCallback3 = function (data) {
     var result = '';
     var dailynews3 = data;
+    
+    result += '<colgroup>';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '</colgroup>';
     
     result += '<thead>';
     result += '<tr>';
@@ -657,7 +697,7 @@ var ajaxCallback3 = function (data) {
     var Lastai = dailynews3[dailynews3.length-1]["ai_count"];
     
     result += '<tr>';
-    result += '<td colspan="3" style="background: #ddd; text-align:center;">합　　　　계</td>';
+    result += '<td colspan="3" style="background: #ddd; text-align:center;">합&emsp;&emsp;&emsp;계</td>';
     result += '<td style="background: #ddd;">' + sum1 + '</td>';
     result += '<td style="background: #ddd;">' + sum2 + '</td>';
     result += '<td style="background: #ddd;">' + sum3 + '</td>';
@@ -700,6 +740,19 @@ $("#TotalDailyReport").submit(function(){
 var ajaxCallback4 = function (data) {
     var result = '';
     var dailynews4 = data;
+    
+    result += '<colgroup>';
+    result += '<col width="10%">';
+    result += '<col width="10%">';
+    result += '<col width="10%">';
+    result += '<col width="10%">';
+    result += '<col width="10%">';
+    result += '<col width="10%">';
+    result += '<col width="10%">';
+    result += '<col width="10%">';
+    result += '<col width="10%">';
+    result += '<col width="10%">';
+    result += '</colgroup>';
     
     result += '<thead>';
     result += '<tr>';
@@ -793,10 +846,10 @@ var ajaxCallback4 = function (data) {
 //                hap7 += gap7;
 //                hap8 += gap8;
                 
-                result += '<td class="seltable4" style="width:10%;"></td>';
+                result += '<td style="text-align:center;" class="seltable4"></td>';
                 
                 result += '<td style="text-align:center;" class="alltable4">' + dname + '</td>';
-                result += '<td style="text-align:center;">' + gap1 + '</td>';
+                result += '<td style="text-align:center;" class="excelToInt">' + gap1 + '</td>';
                 result += '<td>' + gap2 + '</td>';
                 result += '<td>' + gap3 + '</td>';
                 result += '<td>' + gap4 + '</td>';
@@ -811,7 +864,7 @@ var ajaxCallback4 = function (data) {
             var Lastai=  donsaArray[donsaArray.length-1]["ai_count"];
 
             result += '<tr>';
-            result += '<td colspan="3" style="background: #eee; text-align:center;">소　　　　계</td>';
+            result += '<td colspan="3" style="background: #eee; text-align:center;">소&emsp;&emsp;&emsp;계</td>';
             result += '<td style="background: #eee;">' + hap3 + '</td>';
             result += '<td style="background: #eee;">' + hap4 + '</td>';
             result += '<td style="background: #eee;">' + hap5 + '</td>';
@@ -830,7 +883,7 @@ var ajaxCallback4 = function (data) {
         }
     });
     result += '<tr>';
-    result += '<td colspan="3" style="background: #eee; text-align:center;">합　　　　계</td>';
+    result += '<td colspan="3" style="background: #eee; text-align:center;">합&emsp;&emsp;&emsp;계</td>';
     result += '<td style="background: #eee;">' + sum3 + '</td>';
     result += '<td style="background: #eee;">' + sum4 + '</td>';
     result += '<td style="background: #eee;">' + sum5 + '</td>';
@@ -885,6 +938,18 @@ $("#FarmMonthlyReport").submit(function(){
 var ajaxCallback5 = function (data) {
     var result = '';
     var dailynews5 = data;
+    
+    result += '<colgroup>';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '</colgroup>';
     
     result += '<thead>';
     result += '<tr>';
@@ -972,7 +1037,7 @@ var ajaxCallback5 = function (data) {
     var Lastai = dailynews5[dailynews5.length-1]["ai_count"];
     
     result += '<tr>';
-    result += '<td colspan="3" style="background: #ddd; text-align:center;">합　　　　계</td>';
+    result += '<td colspan="3" style="background: #ddd; text-align:center;">합&emsp;&emsp;&emsp;계</td>';
     result += '<td style="background: #ddd;">' + sum1 + '</td>';
     result += '<td style="background: #ddd;">' + sum2 + '</td>';
     result += '<td style="background: #ddd;">' + sum3 + '</td>';
@@ -1013,90 +1078,21 @@ $("#FarmDailyReport").submit(function(){
     return false;
 }); // end submit()
 
-var useriddata;
-
-//농장 돈사별 일보 테이블 출력
-var useridCallback = function (data) {
-    var result = '';
-    useriddata = data;
-    
-    result += '<tr>';
-    
-    $("#selectBox4").append("<option value='농장 선택'>농장 선택</option>");
-    $("#selectBox5").append("<option value='농장 선택'>농장 선택</option>");
-    $("#selectBox6").append("<option value='농장 선택'>농장 선택</option>");
-   
-    //  농장 반복
-    $.each(useriddata, function (index_nongjang, nongjang) {
-        var nname = nongjang["locationname"];
-        var nid = nongjang["locationid"];
-        var donsaArray = nongjang["buildings"];
-        
-        $("#selectBox4").append("<option value='"+ nname +"'>"+ nname +"</option>");
-        $("#selectBox5").append("<option value='"+ nid +"'>"+ nname +"</option>");       
-        $("#selectBox6").append("<option value='"+ nid +"'>"+ nname +"</option>");
-        
-        if (donsaArray != null) {
-            //  돈사 데이터 반복
-            $.each(donsaArray, function (index_donsa, donsa) {
-                var dname = donsa["buildingname"];
-                var did = donsa["buildingid"];
-                
-                result += '<td class="temtable6">' + nname + '</td>';
-                result += '<td>' + nid + '</td>';
-                result += '<td>' + dname + '</td>';
-                result += '<td>' + did + '</td>';
-                result += '</tr>';
-            })
-        }
-    });
-//    $('#tempdata').append(result).addClass("removetem");
-    $(".temtable6").each(function () {
-        var rows = $(".temtable6:contains('" + $(this).text() + "')");
-        if (rows.length > 1) {
-            rows.eq(0).attr("rowspan", rows.length);
-            rows.not(":eq(0)").remove();
-        }
-    });
-};
-
-//일보조회 셀렉트
-function categoryChange(e) {
-    $(".removegood").remove();
-    
-    var donsaArray = useriddata[e.value-1].buildings;
-    
-    $.each (donsaArray, function (index_building, donsaOne){
-        var donsaName= donsaOne["buildingname"];
-        $("#good").append("<option class='removegood' value='"+ donsaName +"'>"+donsaName+"</option>");
-    })
-}
-
-$('ul.tabs li').click(function () {
-    $(".removetem").empty();
-    $("#selectBox4").empty();
-    $("#selectBox5").empty();
-    $("#selectBox6").empty();
-    
-    // 유저 인덱스를 가져온다.
-    var useridx = {"useridx":1};
-    
-    $.ajax({
-        url: "http://101.101.162.62:8081/smartdaily/req_user_building"
-        , dataType: "json"
-        , type: "POST"
-        , data: useridx
-        , success: useridCallback
-        , error: function () {
-            alert("해당 조건을 올바르게 선택해주세요.");
-        }
-    });
-    return false;
-})
-
 var ajaxCallback6 = function (data) {    
     var result = '';
     var dailynews6 = data;
+    
+    result += '<colgroup>';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '<col width="11.11%">';
+    result += '</colgroup>';
     
     result += '<thead>';
     result += '<tr>';
@@ -1186,7 +1182,7 @@ var ajaxCallback6 = function (data) {
     var Lastai = dailynews6[dailynews6.length-1]["ai_count"];
     
     result += '<tr>';
-    result += '<td colspan="3" style="background: #ddd; text-align:center;">합　　　　계</td>';
+    result += '<td colspan="3" style="background: #ddd; text-align:center;">합&emsp;&emsp;&emsp;계</td>';
     result += '<td style="background: #ddd;">' + sum1 + '</td>';
     result += '<td style="background: #ddd;">' + sum2 + '</td>';
     result += '<td style="background: #ddd;">' + sum3 + '</td>';
@@ -1228,6 +1224,87 @@ $("#FarmDonsaDailyReport").submit(function(){
     });
     return false;
 }); // end submit()
+
+var useriddata;
+
+//농장 돈사별 일보 테이블 출력
+var useridCallback = function (data) {
+    var result = '';
+    useriddata = data;
+    
+    result += '<tr>';
+    
+    $("#selectBox4").append("<option value='농장 선택'>농장 선택</option>");
+    $("#selectBox5").append("<option value='농장 선택'>농장 선택</option>");
+    $("#selectBox6").append("<option value='농장 선택'>농장 선택</option>");
+   
+    //  농장 반복
+    $.each(useriddata, function (index_nongjang, nongjang) {
+        var nname = nongjang["locationname"];
+        var nid = nongjang["locationid"];
+        var donsaArray = nongjang["buildings"];
+        
+        $("#selectBox4").append("<option value='"+ nname +"'>"+ nname +"</option>");
+        $("#selectBox5").append("<option value='"+ nid +"'>"+ nname +"</option>");       
+        $("#selectBox6").append("<option value='"+ nid +"'>"+ nname +"</option>");
+        
+        if (donsaArray != null) {
+            //  돈사 데이터 반복
+            $.each(donsaArray, function (index_donsa, donsa) {
+                var dname = donsa["buildingname"];
+                var did = donsa["buildingid"];
+                
+                result += '<td class="temtable6">' + nname + '</td>';
+                result += '<td>' + nid + '</td>';
+                result += '<td>' + dname + '</td>';
+                result += '<td>' + did + '</td>';
+                result += '</tr>';
+            })
+        }
+    });
+//    $('#tempdata').append(result).addClass("removetem");
+    $(".temtable6").each(function () {
+        var rows = $(".temtable6:contains('" + $(this).text() + "')");
+        if (rows.length > 1) {
+            rows.eq(0).attr("rowspan", rows.length);
+            rows.not(":eq(0)").remove();
+        }
+    });
+};
+
+//일보조회 셀렉트
+function categoryChange(e) {
+    $(".removegood").remove();
+    
+    var donsaArray = useriddata[e.value-1].buildings;
+    
+    $.each (donsaArray, function (index_building, donsaOne){
+        var donsaName= donsaOne["buildingname"];
+        $("#good").append("<option class='removegood' value='"+ donsaName +"'>"+donsaName+"</option>");
+    })
+}
+
+$('ul.tabs li').click(function () {
+    $(".removetem").empty();
+    $("#selectBox4").empty();
+    $("#selectBox5").empty();
+    $("#selectBox6").empty();
+    
+    // 유저 인덱스를 가져온다.
+    var useridx = {"useridx":1};
+    
+    $.ajax({
+        url: "http://101.101.162.62:8081/smartdaily/req_user_building"
+        , dataType: "json"
+        , type: "POST"
+        , data: useridx
+        , success: useridCallback
+        , error: function () {
+            alert("해당 조건을 올바르게 선택해주세요.");
+        }
+    });
+    return false;
+})
 
 //시작-종료달력출력
 $(document).ready(function () {    
@@ -1439,7 +1516,7 @@ $(document).ready(function () {
 });
 
 //일보조회 엑셀다운로드
-function fnExcelReport(id, title) {
+function fnExcelReport11(id, title) {
     var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
     tab_text = tab_text + '<head><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">';
     tab_text = tab_text + '<xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>'
@@ -1447,6 +1524,124 @@ function fnExcelReport(id, title) {
     tab_text = tab_text + '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
     tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml> <style> .excelToInt{mso-number-format:"yyyy\-mm\";} </style></head><body>';
     tab_text = tab_text + "<table border='1px'>";
+    tab_text = tab_text + "<colgroup>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "</colgroup>";
+    var exportTable = $('#' + id).clone();
+    exportTable.find('input').each(function (index, elem) {
+        $(elem).remove();
+    });
+    tab_text = tab_text + exportTable.html();
+    tab_text = tab_text + '</table></body></html>';
+    var data_type = 'data:application/vnd.ms-excel';
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+    var fileName = title + '.xls';
+    //Explorer 환경에서 다운로드
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+        if (window.navigator.msSaveBlob) {
+            var blob = new Blob([tab_text], {
+                type: "application/csv;charset=utf-8;"
+            });
+            navigator.msSaveBlob(blob, fileName);
+        }
+    }
+    else {
+        var blob2 = new Blob([tab_text], {
+            type: "application/csv;charset=utf-8;"
+        });
+        var filename = fileName;
+        var elem = window.document.createElement('a');
+        elem.href = window.URL.createObjectURL(blob2);
+        elem.download = filename;
+        document.body.appendChild(elem);
+        elem.click();
+        document.body.removeChild(elem);
+    }
+}
+
+function fnExcelReport10(id, title) {
+    var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
+    tab_text = tab_text + '<head><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">';
+    tab_text = tab_text + '<xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>'
+    tab_text = tab_text + '<x:Name>Test Sheet</x:Name>';
+    tab_text = tab_text + '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
+    tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml> <style> .excelToInt{mso-number-format:"yyyy\-mm\";} </style></head><body>';
+    tab_text = tab_text + "<table border='1px'>";
+    tab_text = tab_text + "<colgroup>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "</colgroup>";
+    var exportTable = $('#' + id).clone();
+    exportTable.find('input').each(function (index, elem) {
+        $(elem).remove();
+    });
+    tab_text = tab_text + exportTable.html();
+    tab_text = tab_text + '</table></body></html>';
+    var data_type = 'data:application/vnd.ms-excel';
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+    var fileName = title + '.xls';
+    //Explorer 환경에서 다운로드
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+        if (window.navigator.msSaveBlob) {
+            var blob = new Blob([tab_text], {
+                type: "application/csv;charset=utf-8;"
+            });
+            navigator.msSaveBlob(blob, fileName);
+        }
+    }
+    else {
+        var blob2 = new Blob([tab_text], {
+            type: "application/csv;charset=utf-8;"
+        });
+        var filename = fileName;
+        var elem = window.document.createElement('a');
+        elem.href = window.URL.createObjectURL(blob2);
+        elem.download = filename;
+        document.body.appendChild(elem);
+        elem.click();
+        document.body.removeChild(elem);
+    }
+}
+
+function fnExcelReport9(id, title) {
+    var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
+    tab_text = tab_text + '<head><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">';
+    tab_text = tab_text + '<xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>'
+    tab_text = tab_text + '<x:Name>Test Sheet</x:Name>';
+    tab_text = tab_text + '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
+    tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml> <style> .excelToInt{mso-number-format:"yyyy\-mm\";} </style></head><body>';
+    tab_text = tab_text + "<table border='1px'>";
+    tab_text = tab_text + "<colgroup>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "<col width='110'>";
+    tab_text = tab_text + "</colgroup>";
     var exportTable = $('#' + id).clone();
     exportTable.find('input').each(function (index, elem) {
         $(elem).remove();
