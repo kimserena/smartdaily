@@ -1,13 +1,68 @@
 var tempstring = "";
 
+function getToday() {
+  var date = new Date();
+  return date.getFullYear() + "-" + ("0"+(date.getMonth()+1)).slice(-2) + "-" + ("0"+date.getDate()).slice(-2);
+}
+
 /*일보조회*/
 //전체통합월보(누적)테이블출력
 var ajaxCallback = function (data) {
     var result = '';
     var dailynews = data["report"];
-    var jaga = dailynews["jaga"];
+    var jaga = dailynews["jaga"];    
+    
+    today = getToday();
+    
+    result += '<thead>';
     result += '<tr>';
-    result += '<td id="jagatable">자가</td>';
+    result += '<td style="font-size:18px; font-weight:bold; text-align:center;" rowspan="3" colspan="11">스마트데일리 통합월보(누적)</td>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '</tr>';
+    
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">상호</td>';
+    result += '<td style="text-align:center;" colspan="4">한국영농조합법인 대표이사 홍길동</td>';
+    result += '<td style="background: #ddd; text-align:center;">조회기간</td>';
+    result += '<td style="text-align:center;" colspan="3">'+ $("#sdate").val() + "~" + $("#edate").val() +'</td>';
+    result += '<td style="background: #ddd; text-align:center;" colspan="2">현재 총 사육두수</td>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">조회농장</td>';
+    result += '<td style="text-align:center;" colspan="4">전체 농장</td>';
+    result += '<td style="background: #ddd; text-align:center;">조회일자</td>';
+    result += '<td style="text-align:center;" colspan="3">' + getToday() +'</td>';
+    result += '<td style="text-align:center;" colspan="2" class="nowallsum1"></td>';
+    result += '</tr>';
+    
+    result += '<tr>';
+    result += '<td colspan="11"></td>';
+    result += '</tr>';
+    
+    result += '</thead>';
+    
+    result += '<thead>';
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">구분</td>';
+    result += '<td style="background: #ddd; text-align:center;">소재지별</td>';
+    result += '<td style="background: #ddd; text-align:center;">돈사</td>';
+    result += '<td style="background: #ddd; text-align:center;">면적</td>';
+    result += '<td style="background: #ddd; text-align:center;">시작</td>';
+    result += '<td style="background: #ddd; text-align:center;">전입</td>';
+    result += '<td style="background: #ddd; text-align:center;">전출</td>';
+    result += '<td style="background: #ddd; text-align:center;">폐사</td>';
+    result += '<td style="background: #ddd; text-align:center;">출하</td>';
+    result += '<td style="background: #ddd; text-align:center;">예상</td>';
+    result += '<td style="background: #ddd; text-align:center;">AI 실제</td>';
+    result += '</tr>';
+    result += '</thead>';     
+    
+    result += '<tbody id="JagaList">';
+    result += '<tr>';
+    result += '<td style="text-align:center;" id="jagatable">자가 농장</td>';
     var jagasize = 0;
     var wetaksize = 0;
     var sum1 = 0;
@@ -35,8 +90,8 @@ var ajaxCallback = function (data) {
             //  돈사 데이터 반복
             $.each(donsaArray, function (index_donsa, donsa) {
                 var dname = donsa["buildingname"];
-                result += '<td class = "sojaeji">' + nname + '</td>';
-                result += '<td>' + dname + '</td>';
+                result += '<td style="text-align:center;" class = "sojaeji">' + nname + '</td>';
+                result += '<td style="text-align:center;">' + dname + '</td>';
                 var gap1 = donsa["areasize"];
                 var gap2 = donsa["start_count"];
                 var gap3 = donsa["in_count"];
@@ -66,15 +121,15 @@ var ajaxCallback = function (data) {
         }
         if (donsaArray != null) {
             result += '<tr>';
-            result += '<td colspan="2" style="letter-spacing: 50px; background: #f7f7f7;">소계</td>';
-            result += '<td style="background: #f7f7f7;">' + hap1 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap2 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap3 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap4 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap5 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap6 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap7 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap8 + '</td>';
+            result += '<td colspan="2" style="background: #eee; text-align:center;">소　　　　계</td>';
+            result += '<td style="background: #eee;">' + hap1 + '</td>';
+            result += '<td style="background: #eee;">' + hap2 + '</td>';
+            result += '<td style="background: #eee;">' + hap3 + '</td>';
+            result += '<td style="background: #eee;">' + hap4 + '</td>';
+            result += '<td style="background: #eee;">' + hap5 + '</td>';
+            result += '<td style="background: #eee;">' + hap6 + '</td>';
+            result += '<td style="background: #eee;">' + hap7 + '</td>';
+            result += '<td style="background: #eee;">' + hap8 + '</td>';
             result += '</tr>';
             sum1 += hap1;
             sum2 += hap2;
@@ -86,9 +141,17 @@ var ajaxCallback = function (data) {
             sum8 += hap8;
         }
     });
+    
+    result += '</tbody>';
+    result += '<tbody id="WetakList">';
+    
+    result += '<tr>';
+    result += '<td colspan="11">　</td>';
+    result += '</tr>';
+    
     var wetak = dailynews["wetak"];
     result += '<tr>';
-    result += '<td id="wetaktable" rowspan="0">위탁</td>';
+    result += '<td style="text-align:center;" id="wetaktable" rowspan="0">위탁 농장</td>';
     //  농장 반복
     $.each(wetak, function (index_wnongjang, wnongjang) {
         var wnname = wnongjang["locationname"];
@@ -106,8 +169,8 @@ var ajaxCallback = function (data) {
             //  돈사 데이터 반복
             $.each(wdonsaArray, function (index_wdonsa, wdonsa) {
                 var wdname = wdonsa["buildingname"];
-                result += '<td class="wsojaeji">' + wnname + '</td>';
-                result += '<td>' + wdname + '</td>';
+                result += '<td style="text-align:center;" class="wsojaeji">' + wnname + '</td>';
+                result += '<td style="text-align:center;">' + wdname + '</td>';
                 var wgap1 = wdonsa["areasize"];
                 var wgap2 = wdonsa["start_count"];
                 var wgap3 = wdonsa["in_count"];
@@ -148,31 +211,41 @@ var ajaxCallback = function (data) {
         }
         if (wdonsaArray != null) {
             result += '<tr>';
-            result += '<td colspan="2" style="letter-spacing: 50px; background: #f7f7f7;">소계</td>';
-            result += '<td style="background: #f7f7f7;">' + whap1 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + whap2 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + whap3 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + whap4 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + whap5 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + whap6 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + whap7 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + whap8 + '</td>';
+            result += '<td colspan="2" style="background: #eee; text-align:center;">소　　　　계</td>';
+            result += '<td style="background: #eee;">' + whap1 + '</td>';
+            result += '<td style="background: #eee;">' + whap2 + '</td>';
+            result += '<td style="background: #eee;">' + whap3 + '</td>';
+            result += '<td style="background: #eee;">' + whap4 + '</td>';
+            result += '<td style="background: #eee;">' + whap5 + '</td>';
+            result += '<td style="background: #eee;">' + whap6 + '</td>';
+            result += '<td style="background: #eee;">' + whap7 + '</td>';
+            result += '<td style="background: #eee;">' + whap8 + '</td>';
             result += '</tr>';
             sum1 += whap1;
+            sum2 += whap2;
+            sum3 += whap3;
+            sum4 += whap4;
+            sum5 += whap5;
+            sum6 += whap6;
+            sum7 += whap7;
+            sum8 += whap8;
         }
     });
+    
     result += '<tr>';
-    result += '<td colspan="3" style="letter-spacing: 50px; background: #f7f7f7;">합계</td>';
-    result += '<td style="background: #f7f7f7;">' + sum1 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum2 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum3 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum4 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum5 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum6 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum7 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum8 + '</td>';
+    result += '<td colspan="3" style="background: #ddd; text-align:center;">합　　　　계</td>';
+    result += '<td style="background: #ddd;">' + sum1 + '</td>';
+    result += '<td style="background: #ddd;">' + sum2 + '</td>';
+    result += '<td style="background: #ddd;">' + sum3 + '</td>';
+    result += '<td style="background: #ddd;">' + sum4 + '</td>';
+    result += '<td style="background: #ddd;">' + sum5 + '</td>';
+    result += '<td style="background: #ddd;">' + sum6 + '</td>';
+    result += '<td style="background: #ddd;">' + sum7 + '</td>';
+    result += '<td style="background: #ddd;">' + sum8 + '</td>';
     result += '</tr>';
-    $('#tableList').append(result).addClass("unique");
+    
+    result += '</tbody>';
+    $('#table1').append(result).addClass("unique");
     $('#jagatable').attr("rowspan", jagasize);
     $('#wetaktable').attr("rowspan", wetaksize);
     $(".sojaeji").each(function () {
@@ -189,6 +262,8 @@ var ajaxCallback = function (data) {
             rows.not(":eq(0)").remove();
         }
     });
+    var NowAllsum= sum7;
+    $(".nowallsum1").append(NowAllsum);
 };
 
 //전체통합월보(누적) 출력
@@ -206,7 +281,7 @@ $("#AccrueMonthlyReport").submit(function(){
         , data: allData
         , success: ajaxCallback
         , error: function () {
-            alert("에러발생");
+            alert("해당 조건을 올바르게 선택해주세요.");
         }
     });
     return false;
@@ -218,8 +293,56 @@ var ajaxCallback2 = function (data) {
     var result = '';
     var Adailynews = data["report"];
     var Ajaga = Adailynews["jaga"];
+    
+    result += '<thead>';
     result += '<tr>';
-    result += '<td id="Ajagatable">자가</td>';
+    result += '<td style="font-size:18px; font-weight:bold; text-align:center;" rowspan="3" colspan="11">스마트데일리 통합월보(월별)</td>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '</tr>';
+    
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">상호</td>';
+    result += '<td style="text-align:center;" colspan="4">한국영농조합법인 대표이사 홍길동</td>';
+    result += '<td style="background: #ddd; text-align:center;">조회기간</td>';
+    result += '<td style="text-align:center;" colspan="3" class="excelToInt">'+ $(".mdate").val() +'</td>';
+    result += '<td style="background: #ddd; text-align:center;" colspan="2">현재 총 사육두수</td>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">조회농장</td>';
+    result += '<td style="text-align:center;" colspan="4">전체 농장</td>';
+    result += '<td style="background: #ddd; text-align:center;">조회일자</td>';
+    result += '<td style="text-align:center;" colspan="3">' + getToday() +'</td>';
+    result += '<td style="text-align:center;" colspan="2" class="nowallsum2"></td>';
+    result += '</tr>';
+    
+    result += '<tr>';
+    result += '<td colspan="11"></td>';
+    result += '</tr>';
+    
+    result += '</thead>';
+    
+    result += '<thead>';
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">구분</td>';
+    result += '<td style="background: #ddd; text-align:center;">소재지별</td>';
+    result += '<td style="background: #ddd; text-align:center;">돈사</td>';
+    result += '<td style="background: #ddd; text-align:center;">면적</td>';
+    result += '<td style="background: #ddd; text-align:center;">시작</td>';
+    result += '<td style="background: #ddd; text-align:center;">전입</td>';
+    result += '<td style="background: #ddd; text-align:center;">전출</td>';
+    result += '<td style="background: #ddd; text-align:center;">폐사</td>';
+    result += '<td style="background: #ddd; text-align:center;">출하</td>';
+    result += '<td style="background: #ddd; text-align:center;">예상</td>';
+    result += '<td style="background: #ddd; text-align:center;">AI 실제</td>';
+    result += '</tr>';
+    result += '</thead>';     
+    
+    result += '<tbody id="AJagaList">';
+    result += '<tr>';
+    result += '<td style="text-align:center;" id="Ajagatable">자가 농장</td>';
     var Ajagasize = 0;
     var Awetaksize = 0;
     var sum1 = 0;
@@ -242,13 +365,15 @@ var ajaxCallback2 = function (data) {
         var hap6 = 0;
         var hap7 = 0;
         var hap8 = 0;
+        
+        var Lastgap=0;
         if (AdonsaArray != null) {
             Ajagasize += AdonsaArray.length + 1;
             //  돈사 데이터 반복
             $.each(AdonsaArray, function (Aindex_donsa, Adonsa) {
                 var Adname = Adonsa["buildingname"];
-                result += '<td class = "Asojaeji">' + Anname + '</td>';
-                result += '<td>' + Adname + '</td>';
+                result += '<td style="text-align:center;" class = "Asojaeji">' + Anname + '</td>';
+                result += '<td style="text-align:center;">' + Adname + '</td>';
                 var gap1 = Adonsa["areasize"];
                 var gap2 = Adonsa["start_count"];
                 var gap3 = Adonsa["in_count"];
@@ -274,19 +399,20 @@ var ajaxCallback2 = function (data) {
                 result += '<td>' + gap7 + '</td>';
                 result += '<td>' + gap8 + '</td>';
                 result += '</tr>';
+                
             })
         }
-        if (AdonsaArray != null) {
+        if (AdonsaArray != null) {            
             result += '<tr>';
-            result += '<td colspan="2" style="letter-spacing: 50px; background: #f7f7f7;">소계</td>';
-            result += '<td style="background: #f7f7f7;">' + hap1 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap2 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap3 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap4 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap5 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap6 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap7 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap8 + '</td>';
+            result += '<td colspan="2" style="background: #eee; text-align:center;">소　　　　계</td>';
+            result += '<td style="background: #eee;">' + hap1 + '</td>';
+            result += '<td style="background: #eee;">' + hap2 + '</td>';
+            result += '<td style="background: #eee;">' + hap3 + '</td>';
+            result += '<td style="background: #eee;">' + hap4 + '</td>';
+            result += '<td style="background: #eee;">' + hap5 + '</td>';
+            result += '<td style="background: #eee;">' + hap6 + '</td>';
+            result += '<td style="background: #eee;">' + hap7 +'</td>';
+            result += '<td style="background: #eee;">' + hap8 + '</td>';
             result += '</tr>';
             sum1 += hap1;
             sum2 += hap2;
@@ -298,9 +424,17 @@ var ajaxCallback2 = function (data) {
             sum8 += hap8;
         }
     });
+    
+    result += '</tbody>';
+    result += '<tbody id="AWetakList">';
+    
+    result += '<tr>';
+    result += '<td colspan="11">　</td>';
+    result += '</tr>';
+    
     var Awetak = Adailynews["wetak"];
     result += '<tr>';
-    result += '<td id="Awetaktable" rowspan="0">위탁</td>';
+    result += '<td style="text-align:center;" id="Awetaktable" rowspan="0">위탁 농장</td>';
     //  농장 반복
     $.each(Awetak, function (Aindex_wnongjang, Awnongjang) {
         var Awnname = Awnongjang["locationname"];
@@ -318,8 +452,8 @@ var ajaxCallback2 = function (data) {
             //  돈사 데이터 반복
             $.each(AwdonsaArray, function (Aindex_wdonsa, Awdonsa) {
                 var Awdname = Awdonsa["buildingname"];
-                result += '<td class="Awsojaeji">' + Awnname + '</td>';
-                result += '<td>' + Awdname + '</td>';
+                result += '<td style="text-align:center;" class="Awsojaeji">' + Awnname + '</td>';
+                result += '<td style="text-align:center;">' + Awdname + '</td>';
                 var wgap1 = Awdonsa["areasize"];
                 var wgap2 = Awdonsa["start_count"];
                 var wgap3 = Awdonsa["in_count"];
@@ -360,31 +494,38 @@ var ajaxCallback2 = function (data) {
         }
         if (AwdonsaArray != null) {
             result += '<tr>';
-            result += '<td colspan="2" style="letter-spacing: 50px; background: #f7f7f7;">소계</td>';
-            result += '<td style="background: #f7f7f7;">' + whap1 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + whap2 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + whap3 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + whap4 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + whap5 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + whap6 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + whap7 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + whap8 + '</td>';
+            result += '<td colspan="2" style="background: #eee; text-align:center;">소　　　　계</td>';
+            result += '<td style="background: #eee;">' + whap1 + '</td>';
+            result += '<td style="background: #eee;">' + whap2 + '</td>';
+            result += '<td style="background: #eee;">' + whap3 + '</td>';
+            result += '<td style="background: #eee;">' + whap4 + '</td>';
+            result += '<td style="background: #eee;">' + whap5 + '</td>';
+            result += '<td style="background: #eee;">' + whap6 + '</td>';
+            result += '<td style="background: #eee;">' + whap7 + '</td>';
+            result += '<td style="background: #eee;">' + whap8 + '</td>';
             result += '</tr>';
             sum1 += whap1;
+            sum2 += whap2;
+            sum3 += whap3;
+            sum4 += whap4;
+            sum5 += whap5;
+            sum6 += whap6;
+            sum7 += whap7;
+            sum8 += whap8;
         }
     });
     result += '<tr>';
-    result += '<td colspan="3" style="letter-spacing: 50px; background: #f7f7f7;">합계</td>';
-    result += '<td style="background: #f7f7f7;">' + sum1 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum2 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum3 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum4 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum5 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum6 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum7 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum8 + '</td>';
+    result += '<td colspan="3" style="background: #ddd; text-align:center;">합　　　　계</td>';
+    result += '<td style="background: #ddd;">' + sum1 + '</td>';
+    result += '<td style="background: #ddd;">' + sum2 + '</td>';
+    result += '<td style="background: #ddd;">' + sum3 + '</td>';
+    result += '<td style="background: #ddd;">' + sum4 + '</td>';
+    result += '<td style="background: #ddd;">' + sum5 + '</td>';
+    result += '<td style="background: #ddd;">' + sum6 + '</td>';
+    result += '<td style="background: #ddd;">' + sum7 + '</td>';
+    result += '<td style="background: #ddd;">' + sum8 + '</td>';
     result += '</tr>';
-    $('#tableList2').append(result).addClass("unique2");
+    $('#table2').append(result).addClass("unique2");
     $('#Ajagatable').attr("rowspan", Ajagasize);
     $('#Awetaktable').attr("rowspan", Awetaksize);
     $(".Asojaeji").each(function () {
@@ -401,6 +542,8 @@ var ajaxCallback2 = function (data) {
             rows.not(":eq(0)").remove();
         }
     });
+    var NowAllsum= sum7;
+    $(".nowallsum2").append(NowAllsum);
 };
 
 //전체통합월보(월별) 출력
@@ -417,7 +560,7 @@ $("#AllMonthlyReport").submit(function(){
         , data: allData2
         , success: ajaxCallback2
         , error: function () {
-            alert("에러발생");
+            alert("해당 조건을 올바르게 선택해주세요.");
         }
     });
     return false;
@@ -429,6 +572,50 @@ var ajaxCallback3 = function (data) {
     var result = '';
     var dailynews3 = data;
     
+    result += '<thead>';
+    result += '<tr>';
+    result += '<td style="font-size:18px; font-weight:bold; text-align:center;" rowspan="3" colspan="9">스마트데일리 통합일보</td>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '</tr>';
+    
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">상호</td>';
+    result += '<td style="text-align:center;" colspan="4">한국영농조합법인 대표이사 홍길동</td>';
+    result += '<td style="background: #ddd; text-align:center;">조회기간</td>';
+    result += '<td style="text-align:center;" colspan="3" class="excelToInt">'+ $(".mdate").val() +'</td>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">조회농장</td>';
+    result += '<td style="text-align:center;" colspan="4">전체 농장</td>';
+    result += '<td style="background: #ddd; text-align:center;">조회일자</td>';
+    result += '<td style="text-align:center;" colspan="3">' + getToday() +'</td>';
+    result += '</tr>';
+    
+    result += '<tr>';
+    result += '<td colspan="9"></td>';
+    result += '</tr>';
+    
+    result += '</thead>';
+    
+    result += '<thead>';
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">구분</td>';
+    result += '<td style="background: #ddd; text-align:center;">날짜</td>';
+    result += '<td style="background: #ddd; text-align:center;">시작</td>';
+    result += '<td style="background: #ddd; text-align:center;">전입</td>';
+    result += '<td style="background: #ddd; text-align:center;">전출</td>';
+    result += '<td style="background: #ddd; text-align:center;">폐사</td>';
+    result += '<td style="background: #ddd; text-align:center;">출하</td>';
+    result += '<td style="background: #ddd; text-align:center;">예상</td>';
+    result += '<td style="background: #ddd; text-align:center;">AI 실제</td>';
+    result += '</tr>';
+    result += '</thead>';     
+    
+    result += '<tbody id="tableList3">';
+    
     var sum1 = 0;
     var sum2 = 0;
     var sum3 = 0;
@@ -437,7 +624,7 @@ var ajaxCallback3 = function (data) {
     var sum6 = 0;
 
     //  농장 반복
-    $.each(dailynews3, function (index_nongjang, nongjang) {
+    $.each(dailynews3, function (index_nongjang, nongjang) {        
         var gap1 = nongjang["recordday"];
         var gap2 = nongjang["start_count"];
         var gap3 = nongjang["in_count"];
@@ -455,8 +642,8 @@ var ajaxCallback3 = function (data) {
         sum6 += gap8;
         
         result += '<tr>';
-        result += '<td class="alltable3">전체</td>';
-        result += '<td>' + gap1 + '</td>';
+        result += '<td style="text-align:center;" class="alltable3">전체</td>';
+        result += '<td style="text-align:center;">' + gap1 + '</td>';
         result += '<td>' + gap2 + '</td>';
         result += '<td>' + gap3 + '</td>';
         result += '<td>' + gap4 + '</td>';
@@ -466,16 +653,21 @@ var ajaxCallback3 = function (data) {
         result += '<td>' + gap8 + '</td>';
         result += '</tr>';
     });
+    var Lastexp = dailynews3[dailynews3.length-1]["expect_count"];
+    var Lastai = dailynews3[dailynews3.length-1]["ai_count"];
+    
     result += '<tr>';
-    result += '<td colspan="3" style="letter-spacing: 50px; background: #f7f7f7;">합계</td>';
-    result += '<td style="background: #f7f7f7;">' + sum1 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum2 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum3 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum4 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum5 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum6 + '</td>';
+    result += '<td colspan="3" style="background: #ddd; text-align:center;">합　　　　계</td>';
+    result += '<td style="background: #ddd;">' + sum1 + '</td>';
+    result += '<td style="background: #ddd;">' + sum2 + '</td>';
+    result += '<td style="background: #ddd;">' + sum3 + '</td>';
+    result += '<td style="background: #ddd;">' + sum4 + '</td>';
+    result += '<td style="background: #ddd;">' + Lastexp + '</td>';
+    result += '<td style="background: #ddd;">' + Lastai + '</td>';
     result += '</tr>';
-    $('#tableList3').append(result).addClass("unique3");
+    result += '</tbody>';
+    
+    $('#table3').append(result).addClass("unique3");
     $(".alltable3").each(function () {
         var rows = $(".alltable3:contains('" + $(this).text() + "')");
         if (rows.length > 1) {
@@ -498,7 +690,7 @@ $("#TotalDailyReport").submit(function(){
         , data: allData3
         , success: ajaxCallback3
         , error: function () {
-            alert("에러발생");
+            alert("해당 조건을 올바르게 선택해주세요.");
         }
     });
     return false;
@@ -509,8 +701,55 @@ var ajaxCallback4 = function (data) {
     var result = '';
     var dailynews4 = data;
     
+    result += '<thead>';
     result += '<tr>';
-    result += '<td rowspan="0" class="seltable4" style="width:10%;"></td>';
+    result += '<td style="font-size:18px; font-weight:bold; text-align:center;" rowspan="3" colspan="10">스마트데일리 돈사별 월보</td>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '</tr>';
+    
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">상호</td>';
+    result += '<td style="text-align:center;" colspan="3">한국영농조합법인 대표이사 홍길동</td>';
+    result += '<td style="background: #ddd; text-align:center;">조회기간</td>';
+    result += '<td style="text-align:center;" colspan="3">'+ $(".ydate").val() +'</td>';
+    result += '<td style="background: #ddd; text-align:center;" colspan="2">현재 총 사육두수</td>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">조회농장</td>';
+    result += '<td style="text-align:center;" colspan="3">'+ $("#selectBox4 option:selected").text() +'</td>';
+    result += '<td style="background: #ddd; text-align:center;">조회일자</td>';
+    result += '<td style="text-align:center;" colspan="3">' + getToday() +'</td>';
+    result += '<td style="text-align:center;" colspan="2" class="nowallsum4"></td>';
+    result += '</tr>';
+    
+    result += '<tr>';
+    result += '<td colspan="10"></td>';
+    result += '</tr>';
+    
+    result += '</thead>';
+    
+    result += '<thead>';
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">구분</td>';
+    result += '<td style="background: #ddd; text-align:center;">돈사</td>';
+    result += '<td style="background: #ddd; text-align:center;">월별</td>';
+    result += '<td style="background: #ddd; text-align:center;">시작</td>';
+    result += '<td style="background: #ddd; text-align:center;">전입</td>';
+    result += '<td style="background: #ddd; text-align:center;">전출</td>';
+    result += '<td style="background: #ddd; text-align:center;">폐사</td>';
+    result += '<td style="background: #ddd; text-align:center;">출하</td>';
+    result += '<td style="background: #ddd; text-align:center;">예상</td>';
+    result += '<td style="background: #ddd; text-align:center;">AI 실제</td>';
+    result += '</tr>';
+    result += '</thead>';     
+    
+    result += '<tbody id="tableList4">';
+    
+    result += '<tr>';
+    
 
     var sum1 = 0;
     var sum2 = 0;
@@ -520,6 +759,7 @@ var ajaxCallback4 = function (data) {
     var sum6 = 0;
     var sum7 = 0;
     var sum8 = 0;
+    
     //  농장 반복
     $.each(dailynews4, function (index_nongjang, nongjang) {
         var dname = nongjang["buildingname"];
@@ -532,6 +772,7 @@ var ajaxCallback4 = function (data) {
         var hap6 = 0;
         var hap7 = 0;
         var hap8 = 0;
+        
         if (donsaArray != null) {
             //  돈사 데이터 반복
             $.each(donsaArray, function (index_donsa, donsa) {
@@ -549,11 +790,13 @@ var ajaxCallback4 = function (data) {
                 hap4 += gap4;
                 hap5 += gap5;
                 hap6 += gap6;
-                hap7 += gap7;
-                hap8 += gap8;
+//                hap7 += gap7;
+//                hap8 += gap8;
                 
-                result += '<td class="alltable4">' + dname + '</td>';
-                result += '<td>' + gap1 + '</td>';
+                result += '<td class="seltable4" style="width:10%;"></td>';
+                
+                result += '<td style="text-align:center;" class="alltable4">' + dname + '</td>';
+                result += '<td style="text-align:center;">' + gap1 + '</td>';
                 result += '<td>' + gap2 + '</td>';
                 result += '<td>' + gap3 + '</td>';
                 result += '<td>' + gap4 + '</td>';
@@ -563,15 +806,18 @@ var ajaxCallback4 = function (data) {
                 result += '<td>' + gap8 + '</td>';
                 result += '</tr>';
             })
+            
+            var Lastexp=  donsaArray[donsaArray.length-1]["expect_count"];
+            var Lastai=  donsaArray[donsaArray.length-1]["ai_count"];
 
             result += '<tr>';
-            result += '<td colspan="3" style="letter-spacing: 50px; background: #f7f7f7;">소계</td>';
-            result += '<td style="background: #f7f7f7;">' + hap3 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap4 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap5 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap6 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap7 + '</td>';
-            result += '<td style="background: #f7f7f7;">' + hap8 + '</td>';
+            result += '<td colspan="3" style="background: #eee; text-align:center;">소　　　　계</td>';
+            result += '<td style="background: #eee;">' + hap3 + '</td>';
+            result += '<td style="background: #eee;">' + hap4 + '</td>';
+            result += '<td style="background: #eee;">' + hap5 + '</td>';
+            result += '<td style="background: #eee;">' + hap6 + '</td>';
+            result += '<td style="background: #eee;">' + Lastexp + '</td>';
+            result += '<td style="background: #eee;">' + Lastai + '</td>';
             result += '</tr>';
             sum1 += hap1;
             sum2 += hap2;
@@ -579,20 +825,22 @@ var ajaxCallback4 = function (data) {
             sum4 += hap4;
             sum5 += hap5;
             sum6 += hap6;
-            sum7 += hap7;
-            sum8 += hap8;
+            sum7 += Lastexp;
+            sum8 += Lastai;
         }
     });
     result += '<tr>';
-    result += '<td colspan="3" style="letter-spacing: 50px; background: #f7f7f7;">합계</td>';
-    result += '<td style="background: #f7f7f7;">' + sum3 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum4 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum5 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum6 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum7 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum8 + '</td>';
+    result += '<td colspan="3" style="background: #eee; text-align:center;">합　　　　계</td>';
+    result += '<td style="background: #eee;">' + sum3 + '</td>';
+    result += '<td style="background: #eee;">' + sum4 + '</td>';
+    result += '<td style="background: #eee;">' + sum5 + '</td>';
+    result += '<td style="background: #eee;">' + sum6 + '</td>';
+    result += '<td style="background: #eee;">' + sum7 + '</td>';
+    result += '<td style="background: #eee;">' + sum8 + '</td>';
     result += '</tr>';
-    $('#tableList4').append(result).addClass("unique4");
+    result += '</tbody>';
+    
+    $('#table4').append(result).addClass("unique4");
     var data4 = $("#selectBox4").val();
     $('.seltable4').text(data4);
     $(".alltable4").each(function () {
@@ -602,6 +850,15 @@ var ajaxCallback4 = function (data) {
             rows.not(":eq(0)").remove();
         }
     });
+    $(".seltable4").each(function () {
+        var rows = $(".seltable4:contains('" + $(this).text() + "')");
+        if (rows.length > 1) {
+            rows.eq(0).attr("rowspan", rows.length+dailynews4.length+1);
+            rows.not(":eq(0)").remove();
+        }
+    });
+    var NowAllsum= sum7;
+    $(".nowallsum4").append(NowAllsum);
 };
 
 //농장별 월보 출력
@@ -618,7 +875,7 @@ $("#FarmMonthlyReport").submit(function(){
         , data: allData4
         , success: ajaxCallback4
         , error: function () {
-            alert("에러발생");
+            alert("해당 조건을 올바르게 선택해주세요.");
         }
     });
     return false;
@@ -628,7 +885,51 @@ $("#FarmMonthlyReport").submit(function(){
 var ajaxCallback5 = function (data) {
     var result = '';
     var dailynews5 = data;
-        
+    
+    result += '<thead>';
+    result += '<tr>';
+    result += '<td style="font-size:18px; font-weight:bold; text-align:center;" rowspan="3" colspan="9">스마트데일리 농장별 일보</td>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '</tr>';
+    
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">상호</td>';
+    result += '<td style="text-align:center;" colspan="4">한국영농조합법인 대표이사 홍길동</td>';
+    result += '<td style="background: #ddd; text-align:center;">조회기간</td>';
+    result += '<td style="text-align:center;" colspan="3" class="excelToInt">'+ $(".mdate").val() +'</td>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">조회농장</td>';
+    result += '<td style="text-align:center;" colspan="4">'+ $("#selectBox5 option:selected").text() +'</td>';
+    result += '<td style="background: #ddd; text-align:center;">조회일자</td>';
+    result += '<td style="text-align:center;" colspan="3">' + getToday() +'</td>';
+    result += '</tr>';
+    
+    result += '<tr>';
+    result += '<td colspan="9"></td>';
+    result += '</tr>';
+    
+    result += '</thead>';
+    
+    result += '<thead>';
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">구분</td>';
+    result += '<td style="background: #ddd; text-align:center;">날짜</td>';
+    result += '<td style="background: #ddd; text-align:center;">시작</td>';
+    result += '<td style="background: #ddd; text-align:center;">전입</td>';
+    result += '<td style="background: #ddd; text-align:center;">전출</td>';
+    result += '<td style="background: #ddd; text-align:center;">폐사</td>';
+    result += '<td style="background: #ddd; text-align:center;">출하</td>';
+    result += '<td style="background: #ddd; text-align:center;">예상</td>';
+    result += '<td style="background: #ddd; text-align:center;">AI 실제</td>';
+    result += '</tr>';
+    result += '</thead>';     
+    
+    result += '<tbody id="tableList5">';
+    
     var sum1 = 0;
     var sum2 = 0;
     var sum3 = 0;
@@ -639,7 +940,7 @@ var ajaxCallback5 = function (data) {
     //  농장 반복
     $.each(dailynews5, function (index_nongjang, nongjang) {
         result += '<tr>';
-        result += '<td class="alltable5">전체</td>';
+        result += '<td style="text-align:center;" class="alltable5">전체</td>';
         var gap1 = nongjang["recordday"];
         var gap2 = nongjang["start_count"];
         var gap3 = nongjang["in_count"];
@@ -656,7 +957,7 @@ var ajaxCallback5 = function (data) {
         sum5 += gap7;
         sum6 += gap8;
         
-        result += '<td>' + gap1 + '</td>';
+        result += '<td style="text-align:center;">' + gap1 + '</td>';
         result += '<td>' + gap2 + '</td>';
         result += '<td>' + gap3 + '</td>';
         result += '<td>' + gap4 + '</td>';
@@ -667,17 +968,21 @@ var ajaxCallback5 = function (data) {
         result += '</tr>';
         
     });
+    var Lastexp = dailynews5[dailynews5.length-1]["expect_count"];
+    var Lastai = dailynews5[dailynews5.length-1]["ai_count"];
     
     result += '<tr>';
-    result += '<td colspan="3" style="letter-spacing: 50px; background: #f7f7f7;">합계</td>';
-    result += '<td style="background: #f7f7f7;">' + sum1 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum2 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum3 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum4 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum5 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum6 + '</td>';
+    result += '<td colspan="3" style="background: #ddd; text-align:center;">합　　　　계</td>';
+    result += '<td style="background: #ddd;">' + sum1 + '</td>';
+    result += '<td style="background: #ddd;">' + sum2 + '</td>';
+    result += '<td style="background: #ddd;">' + sum3 + '</td>';
+    result += '<td style="background: #ddd;">' + sum4 + '</td>';
+    result += '<td style="background: #ddd;">' + Lastexp + '</td>';
+    result += '<td style="background: #ddd;">' + Lastai + '</td>';
     result += '</tr>';
-    $('#tableList5').append(result).addClass("unique5");    
+    result += '</tbody>';
+    
+    $('#table5').append(result).addClass("unique5");    
     $(".alltable5").each(function () {
         var rows = $(".alltable5:contains('" + $(this).text() + "')");
         if (rows.length > 1) {
@@ -702,7 +1007,7 @@ $("#FarmDailyReport").submit(function(){
         , data: allData5
         , success: ajaxCallback5
         , error: function () {
-            alert("에러발생");
+            alert("해당 조건을 올바르게 선택해주세요.");
         }
     });
     return false;
@@ -783,15 +1088,59 @@ $('ul.tabs li').click(function () {
         , data: useridx
         , success: useridCallback
         , error: function () {
-            alert("에러발생");
+            alert("해당 조건을 올바르게 선택해주세요.");
         }
     });
     return false;
 })
 
-var ajaxCallback6 = function (data) {
+var ajaxCallback6 = function (data) {    
     var result = '';
-    var dailynews = data;
+    var dailynews6 = data;
+    
+    result += '<thead>';
+    result += '<tr>';
+    result += '<td style="font-size:18px; font-weight:bold; text-align:center;" rowspan="3" colspan="9">스마트데일리 돈사별 일보</td>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '</tr>';
+    
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">상호</td>';
+    result += '<td style="text-align:center;" colspan="4">한국영농조합법인 대표이사 홍길동</td>';
+    result += '<td style="background: #ddd; text-align:center;">조회기간</td>';
+    result += '<td style="text-align:center;" colspan="3" class="excelToInt">'+ $(".mdate").val() +'</td>';
+    result += '</tr>';
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">조회농장</td>';
+    result += '<td style="text-align:center;" colspan="4">'+ $("#selectBox6 option:selected").text() +'</td>';
+    result += '<td style="background: #ddd; text-align:center;">조회일자</td>';
+    result += '<td style="text-align:center;" colspan="3">' + getToday() +'</td>';
+    result += '</tr>';
+    
+    result += '<tr>';
+    result += '<td colspan="9"></td>';
+    result += '</tr>';
+    
+    result += '</thead>';
+    
+    result += '<thead>';
+    result += '<tr>';
+    result += '<td style="background: #ddd; text-align:center;">구분</td>';
+    result += '<td style="background: #ddd; text-align:center;">날짜</td>';
+    result += '<td style="background: #ddd; text-align:center;">시작</td>';
+    result += '<td style="background: #ddd; text-align:center;">전입</td>';
+    result += '<td style="background: #ddd; text-align:center;">전출</td>';
+    result += '<td style="background: #ddd; text-align:center;">폐사</td>';
+    result += '<td style="background: #ddd; text-align:center;">출하</td>';
+    result += '<td style="background: #ddd; text-align:center;">예상</td>';
+    result += '<td style="background: #ddd; text-align:center;">AI 실제</td>';
+    result += '</tr>';
+    result += '</thead>';     
+    
+    result += '<tbody id="tableList6">';
         
     var sum1 = 0;
     var sum2 = 0;
@@ -801,7 +1150,7 @@ var ajaxCallback6 = function (data) {
     var sum6 = 0;
 
     //  농장 반복
-    $.each(dailynews, function (index_nongjang, nongjang) {
+    $.each(dailynews6, function (index_nongjang, nongjang) {
         
         var gap1 = nongjang["recordday"];
         var gap2 = nongjang["start_count"];
@@ -820,8 +1169,8 @@ var ajaxCallback6 = function (data) {
         sum6 += gap8;
         
         result += '<tr>';
-        result += '<td class="seltable6"></td>';
-        result += '<td>' + gap1 + '</td>';
+        result += '<td style="text-align:center;" class="seltable6"></td>';
+        result += '<td style="text-align:center;">' + gap1 + '</td>';
         result += '<td>' + gap2 + '</td>';
         result += '<td>' + gap3 + '</td>';
         result += '<td>' + gap4 + '</td>';
@@ -833,16 +1182,21 @@ var ajaxCallback6 = function (data) {
         
     });
     
+    var Lastexp = dailynews6[dailynews6.length-1]["expect_count"];
+    var Lastai = dailynews6[dailynews6.length-1]["ai_count"];
+    
     result += '<tr>';
-    result += '<td colspan="3" style="letter-spacing: 50px; background: #f7f7f7;">합계</td>';
-    result += '<td style="background: #f7f7f7;">' + sum1 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum2 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum3 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum4 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum5 + '</td>';
-    result += '<td style="background: #f7f7f7;">' + sum6 + '</td>';
+    result += '<td colspan="3" style="background: #ddd; text-align:center;">합　　　　계</td>';
+    result += '<td style="background: #ddd;">' + sum1 + '</td>';
+    result += '<td style="background: #ddd;">' + sum2 + '</td>';
+    result += '<td style="background: #ddd;">' + sum3 + '</td>';
+    result += '<td style="background: #ddd;">' + sum4 + '</td>';
+    result += '<td style="background: #ddd;">' + Lastexp + '</td>';
+    result += '<td style="background: #ddd;">' + Lastai + '</td>';
     result += '</tr>';
-    $('#tableList6').append(result).addClass("unique6");
+    result += '</tbody>'; 
+    
+    $('#table6').append(result).addClass("unique6");
     var data6 = $("#good").val();
     $('.seltable6').text(data6);
     $(".seltable6").each(function () {
@@ -869,7 +1223,7 @@ $("#FarmDonsaDailyReport").submit(function(){
         , data: allData
         , success: ajaxCallback6
         , error: function () {
-            alert("에러발생");
+            alert("해당 조건을 올바르게 선택해주세요.");
         }
     });
     return false;
@@ -1091,7 +1445,7 @@ function fnExcelReport(id, title) {
     tab_text = tab_text + '<xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>'
     tab_text = tab_text + '<x:Name>Test Sheet</x:Name>';
     tab_text = tab_text + '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
-    tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
+    tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml> <style> .excelToInt{mso-number-format:"yyyy\-mm\";} </style></head><body>';
     tab_text = tab_text + "<table border='1px'>";
     var exportTable = $('#' + id).clone();
     exportTable.find('input').each(function (index, elem) {

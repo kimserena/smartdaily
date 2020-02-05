@@ -195,8 +195,8 @@ footer{border-top:1px solid #eee; cursor: default; height: 80px;}
 .sub-top-background2-2{background:url('../img/img_v_careersnotice.jpg'); opacity: 0.9; height: 320px; background-size: cover; background-position: center center;  background-repeat: no-repeat; overflow: hidden;}
 .sub-top-background2-3{background:url('../img/img_v_introduce.jpg'); opacity: 0.9; height: 320px; background-size: cover; background-position: center center;  background-repeat: no-repeat; overflow: hidden;}
 .sub-top-background3{background:url('../img/img_v_service_.jpg'); opacity: 0.9; height: 320px; background-size: cover; background-position: center center;  background-repeat: no-repeat; overflow: hidden;}
-.sub-top-background3-2{background:url('../img/office-1209640_1920.jpg'); opacity: 0.9; height: 320px; background-size: cover; background-position: center center;  background-repeat: no-repeat; overflow: hidden;}
-.sub-top-background3-3{background:url('../img/business-suit-690048_1920.jpg'); opacity: 0.9; height: 320px; background-size: cover; background-position: center center;  background-repeat: no-repeat; overflow: hidden;}
+.sub-top-background3-2{background:url('../img/img_v_office.jpg'); opacity: 0.9; height: 320px; background-size: cover; background-position: center center;  background-repeat: no-repeat; overflow: hidden;}
+.sub-top-background3-3{background:url('../img/img_v_menual.jpg'); opacity: 0.9; height: 320px; background-size: cover; background-position: center center;  background-repeat: no-repeat; overflow: hidden;}
 .sub-top-background4{background:url('../img/img_v_inquire.jpg'); opacity: 0.9; height: 320px; background-size: cover; background-position: center center;  background-repeat: no-repeat; overflow: hidden;}
 
 /*서브컨텐츠 intro*/
@@ -292,7 +292,7 @@ ul.tabs li.current{background: #228EC1; color: #fff;}
 .daily_check form input[type=submit]{cursor: pointer; background: #fdfdfd;}
 .daily_check button[type=button].e-download{position: absolute; top:30px; right: 0px; border: 1px solid #e2e2e2; background: #fdfdfd; padding: 10px 20px; cursor: pointer; font-size: 15px;}
 table{width: 100%; margin-top: 15px; border-collapse: collapse; text-align: center;}
-table th, table td {border: 1px solid #e2e2e2;}
+table th, table td {border: 1px solid #888;}
 
 table.ui-datepicker-calendar {display: none;}
 
@@ -401,7 +401,7 @@ input#name{width: 200px;}
 .numbertext {color: #444; font-size: 12px; padding: 8px 12px; position: absolute; top: 0;}
 /* Container for image text */
 .caption-container {text-align: center; background-color: ; padding: 2px 16px;}
-.caption-container p{color:; font-size:20px; margin: 15px 0;}
+.caption-container p{color:; font-size:27px; margin: 15px 0;}
 .menual_row:after {content: ""; display: table; clear: both; margin-bottom: 20px;}
 /* Six columns side by side */
 .menual_row .column {float: left; width: 16.58%;}
